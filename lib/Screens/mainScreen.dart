@@ -49,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
         label: 'Your Tips',
       ),
       const BottomNavigationBarItem(
-        icon: Icon(Icons.add),
+        icon: Icon(Icons.forward_to_inbox_outlined),
         label: 'Inbox',
       ),
       const BottomNavigationBarItem(

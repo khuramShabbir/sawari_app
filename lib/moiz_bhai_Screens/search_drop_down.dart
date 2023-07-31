@@ -25,13 +25,15 @@ class SearchDropDown extends StatelessWidget {
                           // Add margin to position the input field at the top
                           decoration: BoxDecoration(
                             color: const Color(0xffE5DDEE),
-                            borderRadius: BorderRadius.circular(30), // Set the border radius here
+                            borderRadius: BorderRadius.circular(
+                                30), // Set the border radius here
                           ),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
+                              children: const [
                                 Icon(
                                   Icons.arrow_back_ios,
                                   color: Colors.black,
