@@ -28,8 +28,7 @@ class ConfirmPass extends StatelessWidget {
                 height: 10,
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 child: TextFormField(
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -44,7 +43,7 @@ class ConfirmPass extends StatelessWidget {
                       color: AppColors.primeColor,
                     ),
                     suffixIcon: IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.visibility,
                         color: Colors.black,
                         size: 17,
@@ -68,8 +67,7 @@ class ConfirmPass extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                 child: TextFormField(
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -84,7 +82,7 @@ class ConfirmPass extends StatelessWidget {
                       color: AppColors.primeColor,
                     ),
                     suffixIcon: IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.visibility,
                         color: Colors.black,
                         size: 17,
@@ -113,8 +111,7 @@ class ConfirmPass extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) {
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
                     return MainScreen();
                   }));
                 },

@@ -23,8 +23,7 @@ class PaymentScreen extends StatelessWidget {
               padding: const EdgeInsets.all(30.0),
               child: Text(
                 "Please select your\npayment option.",
-                style: AppTextStyle.headerStyleBlack24
-                    .copyWith(fontWeight: FontWeight.w700),
+                style: AppTextStyle.headerStyleBlack24.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
             const SizedBox(
@@ -45,7 +44,7 @@ class PaymentScreen extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: InkWell(
                     onTap: () {
-                      Get.to(PhoneNumberScreen());
+                      Get.to(const PhoneNumberScreen());
                     },
                     child: const ForwardArrow()),
               ),

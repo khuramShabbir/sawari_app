@@ -125,8 +125,7 @@ class BookingForm extends StatelessWidget {
                                 child: TextFormField(
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 5),
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 5),
                                   ),
                                 ),
                               ),
@@ -141,8 +140,7 @@ class BookingForm extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
                         return const SearchLocation();
                       }));
                     },
@@ -170,7 +168,7 @@ class BookingForm extends StatelessWidget {
                   height: 10,
                 ),
                 Image(
-                  image: AssetImage("assets/images/character.png"),
+                  image: const AssetImage("assets/images/character.png"),
                   height: Get.height * 0.25,
                 ),
               ],

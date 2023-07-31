@@ -7,7 +7,7 @@ import '../Utilities/bidding_container_search_tab.dart';
 import '../Utilities/search_screen_Top_container.dart';
 
 class SearchScreen extends StatelessWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,20 +28,18 @@ class SearchScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.to(RideDetailScreen());
+                  Get.to(const RideDetailScreen());
                 },
                 child: Container(
                   height: Get.height * 0.047,
                   width: Get.width * 0.44,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      border:
-                          Border.all(color: Colors.grey.shade300, width: 2)),
+                      border: Border.all(color: Colors.grey.shade300, width: 2)),
                   child: Center(
                     child: Text(
                       "Create a ride alert",
-                      style: AppTextStyle.blacktext14
-                          .copyWith(color: AppTextColors.primaryColor),
+                      style: AppTextStyle.blacktext14.copyWith(color: AppTextColors.primaryColor),
                     ),
                   ),
                 ),

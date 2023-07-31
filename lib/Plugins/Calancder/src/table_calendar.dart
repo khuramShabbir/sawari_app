@@ -1,12 +1,7 @@
-// Copyright 2019 Aleksander Woźniak
-// SPDX-License-Identifier: Apache-2.0
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 
 import 'customization/calendar_builders.dart';
@@ -15,7 +10,6 @@ import 'customization/days_of_week_style.dart';
 import 'customization/header_style.dart';
 import 'shared/utils.dart';
 import 'table_calendar_base.dart';
-import 'widgets/calendar_header.dart';
 import 'widgets/cell_content.dart';
 
 /// Signature for `onDaySelected` callback. Contains the selected day and focused day.
@@ -272,6 +266,7 @@ class TableCalendar<T> extends StatefulWidget {
         super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TableCalendarState<T> createState() => _TableCalendarState<T>();
 }
 
@@ -532,7 +527,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
                     widget.daysOfWeekStyle.dowTextFormatter?.call(day, widget.locale) ??
                         DateFormat.E(widget.locale).format(day);
 
-                final isWeekend = _isWeekend(day, weekendDays: widget.weekendDays);
+                // final isWeekend = _isWeekend(day, weekendDays: widget.weekendDays);
 
                 dowCell = Center(
                   child: ExcludeSemantics(

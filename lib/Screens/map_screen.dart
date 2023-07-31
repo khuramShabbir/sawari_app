@@ -14,19 +14,17 @@ class MapScreens extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.white,
-
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomAppBar(),
+            const CustomAppBar(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 30),
               child: Text(
                 "Where would you like to\npick up passengers?",
-                style: AppTextStyle.headerStyleBlack24
-                    .copyWith(fontWeight: FontWeight.w700),
+                style: AppTextStyle.headerStyleBlack24.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -65,8 +63,7 @@ class MapScreens extends StatelessWidget {
                 // Add margin to position the input field at the top
                 decoration: BoxDecoration(
                   color: const Color(0xffE5DDEE),
-                  borderRadius:
-                      BorderRadius.circular(30), // Set the border radius here
+                  borderRadius: BorderRadius.circular(30), // Set the border radius here
                 ),
                 child: TextFormField(
                   decoration: const InputDecoration(

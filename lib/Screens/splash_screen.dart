@@ -6,7 +6,10 @@ import '../moiz_bhai_Screens/choose_login_signup.dart';
 import '../moiz_bhai_Screens/theme.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SplashScreenState createState() => _SplashScreenState();
 }
 
@@ -15,9 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 2),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => Chooseloginsignup())));
+        const Duration(seconds: 2),
+        () => Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (BuildContext context) => const Chooseloginsignup())));
   }
 
   @override
@@ -29,10 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       children: [
         Text(
           'Share',
-          style: TextStyle(
-              fontSize: 45,
-              color: AppColors.primeColor,
-              fontWeight: FontWeight.w700),
+          style: TextStyle(fontSize: 45, color: AppColors.primeColor, fontWeight: FontWeight.w700),
         ),
         Text(
           'Fare.',

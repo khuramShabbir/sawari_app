@@ -31,9 +31,7 @@ class CodeVerify extends StatelessWidget {
                   Text(
                     'ShareFare?',
                     style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.primeColor),
+                        fontSize: 19, fontWeight: FontWeight.w700, color: AppColors.primeColor),
                   ),
                 ],
               ),
@@ -69,7 +67,7 @@ class CodeVerify extends StatelessWidget {
                 fieldWidth: 45,
                 fieldStyle: FieldStyle.box,
                 outlineBorderRadius: 5,
-                style: TextStyle(fontSize: 17),
+                style: const TextStyle(fontSize: 17),
                 onChanged: (pin) {},
                 onCompleted: (pin) {},
               ),
@@ -89,8 +87,7 @@ class CodeVerify extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (BuildContext context) {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
                       return const ForgetPass();
                     }));
                   },
