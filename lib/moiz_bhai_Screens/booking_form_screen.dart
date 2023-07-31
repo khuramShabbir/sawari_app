@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
 
 import 'search_location.dart';
@@ -43,7 +44,7 @@ class BookingForm extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       border: Border(
                         top: BorderSide(color: Colors.black, width: 1),
                         left: BorderSide(color: Colors.black, width: 1),
@@ -81,7 +82,7 @@ class BookingForm extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: Get.height * 0.02),
                           const Text(
                             'To',
                             style: TextStyle(
@@ -90,7 +91,6 @@ class BookingForm extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            height: 40,
                             decoration: const BoxDecoration(
                               border: Border(
                                 bottom: BorderSide(
@@ -112,7 +112,7 @@ class BookingForm extends StatelessWidget {
                               const Icon(Icons.calendar_today),
                               const SizedBox(width: 5),
                               const Text('Select Date'),
-                              const SizedBox(width: 70),
+                              const SizedBox(width: 60),
                               const Text(
                                 '|',
                                 style: TextStyle(
@@ -123,7 +123,7 @@ class BookingForm extends StatelessWidget {
                               const Icon(Icons.person),
                               Expanded(
                                 child: TextFormField(
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 5),
@@ -143,7 +143,7 @@ class BookingForm extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (BuildContext context) {
-                        return SearchLocation();
+                        return const SearchLocation();
                       }));
                     },
                     style: ElevatedButton.styleFrom(
@@ -155,7 +155,7 @@ class BookingForm extends StatelessWidget {
                           bottomRight: Radius.circular(20),
                         ),
                       ),
-                      minimumSize: const Size(309, 72),
+                      minimumSize: Size(Get.width, 70),
                     ),
                     child: const Text(
                       'Search',
@@ -169,10 +169,9 @@ class BookingForm extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Image(
+                Image(
                   image: AssetImage("assets/images/character.png"),
-                  width: 315,
-                  height: 199,
+                  height: Get.height * 0.25,
                 ),
               ],
             ),

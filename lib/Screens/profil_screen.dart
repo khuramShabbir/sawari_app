@@ -5,7 +5,7 @@ import 'about_you_screen.dart';
 import 'account_screen.dart';
 
 class ProfilScreen extends StatefulWidget {
-  ProfilScreen({Key? key}) : super(key: key);
+  const ProfilScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfilScreen> createState() => _ProfilScreenState();
@@ -49,12 +49,12 @@ class _ProfilScreenState extends State<ProfilScreen> {
                   child: Container(
                     height: 60,
                     color: Colors.white,
+                    width: Get.width * 0.5,
                     child: const Align(
                         alignment: Alignment.bottomCenter,
                         child: Text("   Account",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.w500))),
-                    width: Get.width * 0.5,
                   ),
                 ),
               ],

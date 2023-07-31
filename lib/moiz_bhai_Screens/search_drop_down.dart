@@ -29,11 +29,11 @@ class SearchDropDown extends StatelessWidget {
                                 30), // Set the border radius here
                           ),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
+                              children: const [
                                 Icon(
                                   Icons.arrow_back_ios,
                                   color: Colors.black,
@@ -65,7 +65,7 @@ class SearchDropDown extends StatelessWidget {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Text(
                             '1 Jail Road',
                             style: TextStyle(fontWeight: FontWeight.w400),

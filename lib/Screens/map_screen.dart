@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Screens/drop_of_location.dart';
+import 'package:sawari_app/Utilities/app_bar.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
 
 import '../Controllers/app_controller.dart';
@@ -13,22 +14,13 @@ class MapScreens extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Text(
-            "x",
-            style: AppTextStyle.headerStylePrimaryText24.copyWith(),
-          ),
-        ),
-      ),
+
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            CustomAppBar(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 30),
               child: Text(
@@ -96,7 +88,7 @@ class MapScreens extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: InkWell(
                     onTap: () {
-                      Get.to(DropOfLocationScreen());
+                      Get.to(const DropOfLocationScreen());
                     },
                     child: const ForwardArrow())),
           ],

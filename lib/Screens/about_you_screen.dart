@@ -21,7 +21,7 @@ class AboutYouScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     blackText("Mujeeb"),
-                    Text(
+                    const Text(
                       "newcumor",
                       style: TextStyle(fontSize: 8, color: Colors.grey),
                     ),
@@ -30,7 +30,7 @@ class AboutYouScreen extends StatelessWidget {
                 CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.grey.shade400,
-                  child: Icon(
+                  child: const Icon(
                     Icons.person,
                     color: Colors.white,
                     size: 42,
@@ -68,7 +68,7 @@ class AboutYouScreen extends StatelessWidget {
   Widget blackText(String text) {
     return Text(
       text,
-      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
     );
   }
 }

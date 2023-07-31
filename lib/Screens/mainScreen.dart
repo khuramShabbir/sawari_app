@@ -9,12 +9,13 @@ import 'your_tips_screen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
 
   void _onTabTapped(int index) {
     setState(() {
@@ -65,10 +66,10 @@ class _MainScreenState extends State<MainScreen> {
         controller: _pageController,
         onPageChanged: _onPageChanged,
         children: [
-          BookingForm(),
-          InboxScreen(),
-          YourTipsScreen(),
-          EmptyInboxScreen(),
+          const BookingForm(),
+          const InboxScreen(),
+          const YourTipsScreen(),
+          const EmptyInboxScreen(),
           ProfilScreen(),
         ],
       ),

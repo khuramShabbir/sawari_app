@@ -26,8 +26,9 @@ class SearchLocation extends StatelessWidget {
                   ),
                   child: TextFormField(
                     decoration: const InputDecoration(
+                      hintText: "Search Location",
                       hintStyle: TextStyle(
-                        color: Colors.black,
+                        color: Colors.grey,
                       ),
                       prefixIcon: Icon(
                         Icons.navigate_before,
@@ -45,7 +46,7 @@ class SearchLocation extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(right: 5),
                         child: Icon(
                           Icons.gps_fixed,
@@ -55,13 +56,13 @@ class SearchLocation extends StatelessWidget {
                         onTap: () {
                           Get.to(NumberOfScreens());
                         },
-                        child: Text(
+                        child: const Text(
                           'Use current location',
                           style: TextStyle(
                               fontWeight: FontWeight.w400, fontSize: 12),
                         ),
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(
                             left: 100), // Adjust spacing between text and icon
                         child: Icon(

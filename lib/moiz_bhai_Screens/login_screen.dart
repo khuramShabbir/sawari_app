@@ -70,8 +70,8 @@ class _LoginState extends State<Login> {
                     color: AppColors.primeColor,
                   ),
                   prefixText: "+92  ",
-                  prefixStyle:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  prefixStyle: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
                     color: AppColors.primeColor,
@@ -112,9 +112,9 @@ class _LoginState extends State<Login> {
                               checkbox = !checkbox;
                             });
                           }),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(right: 8.0),
-                        child: const Text(
+                        child: Text(
                           'Remember Me',
                           style: TextStyle(
                             fontSize: 12,
@@ -175,7 +175,7 @@ class _LoginState extends State<Login> {
                   const SizedBox(height: 70),
                   Container(
                     height: 40,
-                    padding: EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
