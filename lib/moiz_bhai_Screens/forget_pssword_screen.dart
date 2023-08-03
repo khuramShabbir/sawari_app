@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
 
+import '../Controllers/app_controller.dart';
 import 'confirm_password.dart';
 
 class ForgetPass extends StatelessWidget {
@@ -33,7 +33,7 @@ class ForgetPass extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 10, right: 5),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: AppColors.primeColor,
+                      color: AppTextColors.primaryColor,
                       width: 1.5,
                     ),
                     borderRadius: BorderRadius.circular(4.0),
@@ -57,13 +57,13 @@ class ForgetPass extends StatelessWidget {
                               const EdgeInsets.only(top: 5, left: 10),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: AppColors.primeColor,
+                              color: AppTextColors.primaryColor,
                               width: 1.5,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: AppColors.primeColor,
+                              color: AppTextColors.primaryColor,
                               width: 1.5,
                             ),
                           ),
@@ -86,8 +86,8 @@ class ForgetPass extends StatelessWidget {
                 }));
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primeColor,
-                foregroundColor: AppColors.primeColor,
+                backgroundColor: AppTextColors.primaryColor,
+                foregroundColor: AppTextColors.primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),

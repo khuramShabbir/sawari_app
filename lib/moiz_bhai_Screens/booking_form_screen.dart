@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
+import 'package:sawari_app/Controllers/app_controller.dart';
 
 import 'search_location.dart';
 
@@ -20,21 +20,14 @@ class BookingForm extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Your pick of rides at',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: AppTextStyle.headerStyleBlack24
+                          .copyWith(fontWeight: FontWeight.w700),
                     ),
                     Text(
                       'low prices.',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: AppColors.primeColor,
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: AppTextStyle.headerStylePrimaryText24,
                     ),
                   ],
                 ),
@@ -57,12 +50,10 @@ class BookingForm extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             'From',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
+                            style: AppTextStyle.blacktext18
+                                .copyWith(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 5),
                           Container(
@@ -83,13 +74,10 @@ class BookingForm extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: Get.height * 0.02),
-                          const Text(
-                            'To',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
+                          Text('To',
+                              style: AppTextStyle.blacktext18.copyWith(
+                                fontWeight: FontWeight.bold,
+                              )),
                           Container(
                             decoration: const BoxDecoration(
                               border: Border(
@@ -125,7 +113,8 @@ class BookingForm extends StatelessWidget {
                                 child: TextFormField(
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 5),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 5),
                                   ),
                                 ),
                               ),
@@ -140,14 +129,15 @@ class BookingForm extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
                         return const SearchLocation();
                       }));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primeColor,
-                      foregroundColor: AppColors.primeColor,
-                      shape: const RoundedRectangleBorder(
+                      backgroundColor: AppTextColors.primaryColor,
+                      foregroundColor: AppTextColors.primaryColor,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20),
@@ -155,13 +145,9 @@ class BookingForm extends StatelessWidget {
                       ),
                       minimumSize: Size(Get.width, 70),
                     ),
-                    child: const Text(
-                      'Search',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
+                    child: Text('Search',
+                        style: AppTextStyle.blacktext18
+                            .copyWith(color: Colors.white)),
                   ),
                 ),
                 const SizedBox(

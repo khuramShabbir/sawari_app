@@ -5,7 +5,6 @@ import 'package:sawari_app/Plugins/Calancder/src/customization/calendar_style.da
 import 'package:sawari_app/Plugins/Calancder/src/table_calendar.dart';
 import 'package:sawari_app/Screens/pick_up_time_screen.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
 
 class CalenderScreen extends StatelessWidget {
   const CalenderScreen({super.key});
@@ -18,7 +17,7 @@ class CalenderScreen extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
-          leading: Icon(Icons.arrow_back, color: AppColors.primeColor),
+          leading: Icon(Icons.arrow_back, color: AppTextColors.primaryColor),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -34,7 +33,8 @@ class CalenderScreen extends StatelessWidget {
               TableCalendar(
                 calendarStyle: CalendarStyle(
                   selectedDecoration: BoxDecoration(
-                      color: AppColors.primeColor, shape: BoxShape.circle),
+                      color: AppTextColors.primaryColor,
+                      shape: BoxShape.circle),
                 ),
                 firstDay: DateTime.utc(2010, 10, 16),
                 lastDay: DateTime.utc(2030, 3, 14),
@@ -44,7 +44,8 @@ class CalenderScreen extends StatelessWidget {
               TableCalendar(
                 calendarStyle: CalendarStyle(
                   selectedDecoration: BoxDecoration(
-                      color: AppColors.primeColor, shape: BoxShape.circle),
+                      color: AppTextColors.primaryColor,
+                      shape: BoxShape.circle),
                 ),
                 firstDay: DateTime.utc(2010, 10, 16),
                 lastDay: DateTime.utc(2030, 3, 14),

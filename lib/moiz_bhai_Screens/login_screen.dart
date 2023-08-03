@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
 
+import '../Controllers/app_controller.dart';
+import 'forget_pssword_screen.dart';
 import 'sign_up_screen.dart';
 
 class Login extends StatefulWidget {
@@ -23,13 +24,7 @@ class _LoginState extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Welcome to',
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
-              ),
+              Text('Welcome to', style: AppTextStyle.blacktext18),
               RichText(
                 text: TextSpan(
                   children: [
@@ -37,7 +32,7 @@ class _LoginState extends State<Login> {
                       text: 'Share',
                       style: TextStyle(
                         fontSize: 45,
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -45,7 +40,7 @@ class _LoginState extends State<Login> {
                       text: 'Fare.',
                       style: TextStyle(
                         fontSize: 45,
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                       ),
                     ),
                   ],
@@ -62,19 +57,19 @@ class _LoginState extends State<Login> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                     borderSide: BorderSide(
-                      color: AppColors.primeColor,
+                      color: AppTextColors.primaryColor,
                     ),
                   ),
                   prefixIcon: Icon(
                     Icons.phone,
-                    color: AppColors.primeColor,
+                    color: AppTextColors.primaryColor,
                   ),
                   prefixText: "+92  ",
                   prefixStyle: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 20),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
-                    color: AppColors.primeColor,
+                    color: AppTextColors.primaryColor,
                   )),
                 )),
               ),
@@ -86,17 +81,17 @@ class _LoginState extends State<Login> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                     borderSide: BorderSide(
-                      color: AppColors.primeColor,
+                      color: AppTextColors.primaryColor,
                     ),
                   ),
                   hintText: 'Password',
                   prefixIcon: Icon(
                     Icons.lock,
-                    color: AppColors.primeColor,
+                    color: AppTextColors.primaryColor,
                   ),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
-                    color: AppColors.primeColor,
+                    color: AppTextColors.primaryColor,
                   )),
                 )),
               ),
@@ -112,25 +107,19 @@ class _LoginState extends State<Login> {
                               checkbox = !checkbox;
                             });
                           }),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 8.0),
-                        child: Text(
-                          'Remember Me',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Text('Remember Me',
+                            style: AppTextStyle.blacktext12),
                       ),
                     ],
                   ),
-                  const Text(
-                    'Forgot Password',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                  InkWell(
+                      onTap: () {
+                        Get.to(const ForgetPass());
+                      },
+                      child: Text('Forgot Password',
+                          style: AppTextStyle.blacktext12)),
                 ],
               ),
               const SizedBox(
@@ -140,30 +129,27 @@ class _LoginState extends State<Login> {
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (BuildContext context) {
-                      return const SignUp();
+                      return SignUp();
                     }));
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primeColor,
-                    foregroundColor: AppColors.primeColor,
+                    backgroundColor: AppTextColors.primaryColor,
+                    foregroundColor: AppTextColors.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(55),
                     ),
                     minimumSize: Size(Get.width * 0.7, 50),
                   ),
-                  child: const Text('Sign Up',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ))),
+                  child: Text('Sign Up',
+                      style: AppTextStyle.blacktext18.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.bold))),
               const SizedBox(
                 height: 60,
               ),
               Text(
                 'Or connect with google account',
                 style: TextStyle(
-                  color: AppColors.primeColor,
+                  color: AppTextColors.primaryColor,
                 ),
               ),
               SizedBox(
@@ -172,14 +158,13 @@ class _LoginState extends State<Login> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 70),
                   Container(
                     height: 40,
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                         width: 2.0,
                       ),
                     ),
@@ -190,9 +175,10 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Text(
+                  Text(
                     'Sign in with google',
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                    style: AppTextStyle.blacktext18
+                        .copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -202,20 +188,17 @@ class _LoginState extends State<Login> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'Don’t have an account?',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                    style: AppTextStyle.blacktext14,
                   ),
                   const SizedBox(
                     width: 5,
                   ),
-                  Text(
-                    'Sign Up',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.primeColor),
-                  )
+                  Text('Sign Up',
+                      style: AppTextStyle.blacktext14.copyWith(
+                          color: AppTextColors.primaryColor,
+                          fontWeight: FontWeight.w700)),
                 ],
               )
             ],

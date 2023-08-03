@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "929934271419",
+    "project_id": "sharefare-33366",
+    "storage_bucket": "sharefare-33366.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929934271419:android:c9c49a263f197f9e405a9e",
+        "android_client_info": {
+          "package_name": "com.example.sawari_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929934271419-5m95lu2v21ldp8164aotu4j7fcjc5hhk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sawari_app",
+            "certificate_hash": "99a5f9fd3445885b49bb8d7bc1362059f969d82e"
+          }
+        },
+        {
+          "client_id": "929934271419-q613sk6hapinsv31mj6mgro17trqhr4k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDak-8FKnMu_QnOeC5tdxnSurJy1mSz6vU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929934271419-q613sk6hapinsv31mj6mgro17trqhr4k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

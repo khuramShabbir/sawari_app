@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
+import 'package:get/get.dart';
 
+import '../Controllers/app_controller.dart';
 import 'login_screen.dart';
 
 class Chooseloginsignup extends StatelessWidget {
@@ -14,34 +15,25 @@ class Chooseloginsignup extends StatelessWidget {
               child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Image(
-            image: AssetImage("assets/images/choose_login.jpeg"),
-            width: 295,
-            height: 254,
-          ),
+          Image(
+              image: AssetImage("assets/images/choose_login.jpeg"),
+              height: Get.height * 0.34),
           const SizedBox(height: 30),
-          const Text(
-            'Your pick of rides at',
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.black,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const Text(
+          Text('Your pick of rides at',
+              style: AppTextStyle.headerStyleBlack24.copyWith(
+                fontWeight: FontWeight.w700,
+              )),
+          Text(
             'low prices.',
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.black,
-              fontWeight: FontWeight.w700,
-            ),
+            style: AppTextStyle.headerStylePrimaryText24
+                .copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: 30),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primeColor,
-              foregroundColor: AppColors.primeColor,
+              backgroundColor: AppTextColors.primaryColor,
+              foregroundColor: AppTextColors.primaryColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(55),
               ),
@@ -62,12 +54,12 @@ class Chooseloginsignup extends StatelessWidget {
                 return const Login();
               }));
             },
-            child: const Text(
+            child: Text(
               'Login',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: Color(0xFF7500F8),
+                color: AppTextColors.primaryColor,
               ),
             ),
           ),

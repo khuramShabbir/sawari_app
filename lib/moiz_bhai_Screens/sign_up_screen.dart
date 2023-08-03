@@ -1,12 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
 
+import '../Controllers/app_controller.dart';
 import 'code_verify_screen.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+class SignUp extends StatefulWidget {
+  SignUp({super.key});
 
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  final phoneNumberController = TextEditingController();
+  final auth = FirebaseAuth.instance;
+  final countryPicker = const FlCountryCodePicker();
+  CountryCode? countryCode;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,23 +39,32 @@ class SignUp extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
                   children: [
-                    Container(
-                      width: 50,
-                      height: 47,
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(left: 10, right: 5),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.primeColor,
-                          width: 1.5,
+                    InkWell(
+                      onTap: () async {
+                        final code =
+                            await countryPicker.showPicker(context: context);
+                        setState(() {
+                          countryCode = code;
+                        });
+                      },
+                      child: Container(
+                        width: 50,
+                        height: 47,
+                        alignment: Alignment.center,
+                        margin: const EdgeInsets.only(left: 10, right: 5),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppTextColors.primaryColor,
+                            width: 1.5,
+                          ),
+                          borderRadius: BorderRadius.circular(4.0),
                         ),
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      child: const Text(
-                        '+92',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20,
+                        child: Text(
+                          countryCode?.dialCode ?? "",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
@@ -54,18 +74,19 @@ class SignUp extends StatelessWidget {
                         height: 55,
                         child: Center(
                           child: TextFormField(
+                            controller: phoneNumberController,
                             decoration: InputDecoration(
                               contentPadding:
                                   const EdgeInsets.only(top: 5, left: 10),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: AppColors.primeColor,
+                                  color: AppTextColors.primaryColor,
                                   width: 1.5,
                                 ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: AppColors.primeColor,
+                                  color: AppTextColors.primaryColor,
                                   width: 1.5,
                                 ),
                               ),
@@ -82,14 +103,32 @@ class SignUp extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (BuildContext context) {
-                      return const CodeVerify();
-                    }));
+                    auth.verifyPhoneNumber(
+                        phoneNumber:
+                            "${countryCode!.dialCode + phoneNumberController.text}",
+                        verificationCompleted: (_) {},
+                        verificationFailed: (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(e.toString()),
+                          ));
+                        },
+                        codeSent: (String verificationId, int? token) {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (BuildContext context) {
+                            return CodeVerify(
+                              verificationIdd: verificationId,
+                            );
+                          }));
+                        },
+                        codeAutoRetrievalTimeout: (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(e.toString()),
+                          ));
+                        });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primeColor,
-                    foregroundColor: AppColors.primeColor,
+                    backgroundColor: AppTextColors.primaryColor,
+                    foregroundColor: AppTextColors.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -107,7 +146,7 @@ class SignUp extends StatelessWidget {
               Text(
                 'Or connect with google account',
                 style: TextStyle(
-                  color: AppColors.primeColor,
+                  color: AppTextColors.primaryColor,
                 ),
               ),
               Row(
@@ -119,7 +158,7 @@ class SignUp extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                         width: 2.0,
                       ),
                     ),
@@ -158,7 +197,7 @@ class SignUp extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.primeColor),
+                        color: AppTextColors.primaryColor),
                   )
                 ],
               )

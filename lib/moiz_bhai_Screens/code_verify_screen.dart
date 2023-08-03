@@ -1,14 +1,25 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
 
-import 'forget_pssword_screen.dart';
+import '../Controllers/app_controller.dart';
+import '../Screens/mainScreen.dart';
 
 class CodeVerify extends StatelessWidget {
-  const CodeVerify({Key? key}) : super(key: key);
+  final String verificationIdd;
+
+  CodeVerify({Key? key, required this.verificationIdd}) : super(key: key);
+
+  bool loading = false;
+
+  final phoneNumberController = TextEditingController();
+
+  final auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +32,19 @@ class CodeVerify extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Are you new to',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                  ),
+                  Text('Are you new to',
+                      style: AppTextStyle.blacktext18.copyWith(
+                        fontWeight: FontWeight.w400,
+                      )),
                   const SizedBox(
                     width: 5,
                   ),
                   Text(
                     'ShareFare?',
                     style: TextStyle(
-                        fontSize: 19, fontWeight: FontWeight.w700, color: AppColors.primeColor),
+                        fontSize: 19,
+                        fontWeight: FontWeight.w700,
+                        color: AppTextColors.primaryColor),
                   ),
                 ],
               ),
@@ -61,39 +74,50 @@ class CodeVerify extends StatelessWidget {
               const SizedBox(height: 20),
               // Add a gap between the text and the text fields
               OTPTextField(
-                length: 4,
+                controller: OtpFieldController(),
+                length: 6,
                 width: Get.width * 0.8,
                 textFieldAlignment: MainAxisAlignment.spaceAround,
-                fieldWidth: 45,
                 fieldStyle: FieldStyle.box,
                 outlineBorderRadius: 5,
                 style: const TextStyle(fontSize: 17),
                 onChanged: (pin) {},
-                onCompleted: (pin) {},
+                onCompleted: (pin) {
+                  phoneNumberController.text = pin;
+                },
               ),
               const SizedBox(
                 height: 30,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 90),
-                child: Text("Resend code in 0:12",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    )),
-              ),
+              Padding(
+                  padding: const EdgeInsets.only(left: 90),
+                  child: Text("Resend code in 0:12",
+                      style: AppTextStyle.blacktext14)),
               const SizedBox(
                 height: 30,
               ),
               ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                      return const ForgetPass();
-                    }));
+                  onPressed: () async {
+                    final credential = PhoneAuthProvider.credential(
+                        verificationId: verificationIdd,
+                        smsCode: phoneNumberController.text.toString());
+                    try {
+                      await auth.signInWithCredential(credential);
+                      // ignore: use_build_context_synchronously
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return MainScreen();
+                      }));
+                      // ignore: empty_catches
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(e.toString()),
+                      ));
+                    }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primeColor,
-                    foregroundColor: AppColors.primeColor,
+                    backgroundColor: AppTextColors.primaryColor,
+                    foregroundColor: AppTextColors.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),

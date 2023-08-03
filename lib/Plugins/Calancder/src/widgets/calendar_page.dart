@@ -3,7 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
+
+import '../../../../Controllers/app_controller.dart';
 
 class CalendarPage extends StatelessWidget {
   final Widget Function(BuildContext context, DateTime day)? dowBuilder;
@@ -74,8 +75,9 @@ class CalendarPage extends StatelessWidget {
 
   TableRow _buildDaysOfWeek(BuildContext context) {
     return TableRow(
-      decoration:
-          BoxDecoration(color: AppColors.primeColor, borderRadius: BorderRadius.circular(100)),
+      decoration: BoxDecoration(
+          color: AppTextColors.primaryColor,
+          borderRadius: BorderRadius.circular(100)),
       children: List.generate(
         7,
         (index) => Padding(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/moiz_bhai_Screens/theme.dart';
 
+import '../Controllers/app_controller.dart';
 import '../Screens/mainScreen.dart';
 
 class ConfirmPass extends StatelessWidget {
@@ -28,19 +28,20 @@ class ConfirmPass extends StatelessWidget {
                 height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 child: TextFormField(
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                       borderSide: BorderSide(
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                       ),
                     ),
                     hintText: 'Password',
                     prefixIcon: Icon(
                       Icons.lock,
-                      color: AppColors.primeColor,
+                      color: AppTextColors.primaryColor,
                     ),
                     suffixIcon: IconButton(
                       icon: const Icon(
@@ -54,12 +55,12 @@ class ConfirmPass extends StatelessWidget {
                     ),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                         width: 1.5,
                       ),
                     ),
@@ -67,19 +68,20 @@ class ConfirmPass extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                 child: TextFormField(
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                       borderSide: BorderSide(
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                       ),
                     ),
                     hintText: 'Confirm Password',
                     prefixIcon: Icon(
                       Icons.lock,
-                      color: AppColors.primeColor,
+                      color: AppTextColors.primaryColor,
                     ),
                     suffixIcon: IconButton(
                       icon: const Icon(
@@ -93,13 +95,13 @@ class ConfirmPass extends StatelessWidget {
                     ),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                         width: 1.0,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: AppColors.primeColor,
+                        color: AppTextColors.primaryColor,
                         width: 1.5,
                       ),
                     ),
@@ -111,13 +113,14 @@ class ConfirmPass extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
                     return MainScreen();
                   }));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primeColor,
-                  foregroundColor: AppColors.primeColor,
+                  backgroundColor: AppTextColors.primaryColor,
+                  foregroundColor: AppTextColors.primaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
                   ),
