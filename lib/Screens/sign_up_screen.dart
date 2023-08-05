@@ -1,10 +1,12 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sawari_app/Screens/code_verify_screen.dart';
 
 import '../Controllers/app_controller.dart';
-import 'code_verify_screen.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({super.key});
@@ -27,11 +29,7 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Join us via phone number',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20,
-                  )),
+              Text('Join us via phone number', style: AppTextStyle.blacktext20),
               const SizedBox(
                 height: 30,
               ),
@@ -48,7 +46,7 @@ class _SignUpState extends State<SignUp> {
                         });
                       },
                       child: Container(
-                        width: 50,
+                        width: 52,
                         height: 47,
                         alignment: Alignment.center,
                         margin: const EdgeInsets.only(left: 10, right: 5),
@@ -61,10 +59,8 @@ class _SignUpState extends State<SignUp> {
                         ),
                         child: Text(
                           countryCode?.dialCode ?? "",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
-                          ),
+                          style: AppTextStyle.blacktext20
+                              .copyWith(fontWeight: FontWeight.w700),
                         ),
                       ),
                     ),
@@ -105,7 +101,7 @@ class _SignUpState extends State<SignUp> {
                   onPressed: () {
                     auth.verifyPhoneNumber(
                         phoneNumber:
-                            "${countryCode!.dialCode + phoneNumberController.text}",
+                            countryCode!.dialCode + phoneNumberController.text,
                         verificationCompleted: (_) {},
                         verificationFailed: (e) {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -134,12 +130,9 @@ class _SignUpState extends State<SignUp> {
                     ),
                     minimumSize: Size(Get.width * 0.8, 50),
                   ),
-                  child: const Text('Submit',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ))),
+                  child: Text('Submit',
+                      style: AppTextStyle.blacktext20
+                          .copyWith(color: Colors.white))),
               const SizedBox(
                 height: 55,
               ),
@@ -152,7 +145,7 @@ class _SignUpState extends State<SignUp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 70),
+                  SizedBox(height: Get.height * 0.1),
                   Container(
                     height: 40,
                     decoration: BoxDecoration(
@@ -173,9 +166,10 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Text(
+                  Text(
                     'Sign in with google',
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                    style: AppTextStyle.blacktext20
+                        .copyWith(fontWeight: FontWeight.w700),
                   ),
                 ],
               ),
@@ -185,19 +179,18 @@ class _SignUpState extends State<SignUp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'Already have an account?',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                    style: AppTextStyle.blacktext14,
                   ),
                   const SizedBox(
                     width: 5,
                   ),
                   Text(
                     'Sign in',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: AppTextColors.primaryColor),
+                    style: AppTextStyle.blacktext14.copyWith(
+                        color: AppTextColors.primaryColor,
+                        fontWeight: FontWeight.w700),
                   )
                 ],
               )

@@ -24,7 +24,8 @@ class MapScreens extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 30),
               child: Text(
                 "Where would you like to\npick up passengers?",
-                style: AppTextStyle.headerStyleBlack24.copyWith(fontWeight: FontWeight.w700),
+                style: AppTextStyle.headerStyleBlack24
+                    .copyWith(fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -37,8 +38,8 @@ class MapScreens extends StatelessWidget {
                 ),
               ),
               child: Row(
-                children: const [
-                  Padding(
+                children: [
+                  const Padding(
                     padding: EdgeInsets.all(5.0),
                     child: CircleAvatar(
                       radius: 10,
@@ -51,7 +52,7 @@ class MapScreens extends StatelessWidget {
                   ),
                   Text(
                     "Why is an exact location better?",
-                    style: TextStyle(color: Colors.black, fontSize: 12),
+                    style: AppTextStyle.blacktext12,
                   ),
                 ],
               ),
@@ -63,7 +64,8 @@ class MapScreens extends StatelessWidget {
                 // Add margin to position the input field at the top
                 decoration: BoxDecoration(
                   color: const Color(0xffE5DDEE),
-                  borderRadius: BorderRadius.circular(30), // Set the border radius here
+                  borderRadius:
+                      BorderRadius.circular(30), // Set the border radius here
                 ),
                 child: TextFormField(
                   decoration: const InputDecoration(

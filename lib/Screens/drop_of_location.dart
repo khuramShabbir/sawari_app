@@ -16,7 +16,7 @@ class DropOfLocationScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         body: Padding(
-          padding: const EdgeInsets.all(35.0),
+          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -60,9 +60,9 @@ class DropOfLocationScreen extends StatelessWidget {
                       Icons.gps_fixed,
                     ),
                   ),
-                  const Text(
+                  Text(
                     'Use current location',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+                    style: AppTextStyle.blacktext12,
                   ),
                   const Padding(
                     padding: EdgeInsets.only(

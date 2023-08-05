@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../Controllers/app_controller.dart';
-import '../moiz_bhai_Screens/choose_login_signup.dart';
+import 'choose_login_signup.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -3,7 +3,7 @@ import 'package:sawari_app/Controllers/app_controller.dart';
 import 'package:sawari_app/Screens/empty_inbox_Screen.dart';
 import 'package:sawari_app/Screens/profil_screen.dart';
 
-import '../moiz_bhai_Screens/booking_form_screen.dart';
+import 'booking_form_screen.dart';
 import 'inboxScreen.dart';
 import 'your_tips_screen.dart';
 

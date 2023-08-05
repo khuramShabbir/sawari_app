@@ -41,35 +41,28 @@ class CodeVerify extends StatelessWidget {
                   ),
                   Text(
                     'ShareFare?',
-                    style: TextStyle(
-                        fontSize: 19,
+                    style: AppTextStyle.blacktext18.copyWith(
                         fontWeight: FontWeight.w700,
                         color: AppTextColors.primaryColor),
                   ),
                 ],
               ),
               const SizedBox(height: 30),
-              const Text(
+              Text(
                 'Enter the 4-digit code sent to your',
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 19,
-                ),
+                style: AppTextStyle.blacktext18
+                    .copyWith(fontWeight: FontWeight.w400),
               ),
-              const Text(
+              Text(
                 'mobile number',
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 19,
-                ),
+                style: AppTextStyle.blacktext18
+                    .copyWith(fontWeight: FontWeight.w400),
               ),
               const SizedBox(height: 30),
-              const Text(
+              Text(
                 '+92 31234 5678',
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                ),
+                style: AppTextStyle.blacktext18
+                    .copyWith(fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 20),
               // Add a gap between the text and the text fields

@@ -47,7 +47,7 @@ class FinalRequestSubmitScreen extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: InkWell(
                       onTap: () {
-                        Get.to(MainScreen());
+                        Get.offAll(MainScreen());
                       },
                       child: const ForwardArrow()),
                 )

@@ -13,12 +13,11 @@ class ForgetPass extends StatelessWidget {
         child: Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text('Forget Password?',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 20,
-              )),
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          SizedBox(
+            height: Get.height * 0.15,
+          ),
+          Text('Forget Password?', style: AppTextStyle.blacktext20),
           const SizedBox(
             height: 30,
           ),
@@ -38,12 +37,9 @@ class ForgetPass extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
-                  child: const Text(
+                  child: Text(
                     '+92',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20,
-                    ),
+                    style: AppTextStyle.blacktext20,
                   ),
                 ),
                 Expanded(
@@ -91,14 +87,11 @@ class ForgetPass extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
-                minimumSize: Size(Get.width * 0.7, 50),
+                minimumSize: Size(Get.width * 0.8, 50),
               ),
-              child: const Text('Submit',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ))),
+              child: Text('Submit',
+                  style: AppTextStyle.blacktext20.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.w600))),
         ]),
       ),
     ));

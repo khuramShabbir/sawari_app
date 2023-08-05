@@ -15,11 +15,11 @@ class PickUpLocation extends StatelessWidget {
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomAppBar(),
+              const CustomAppBar(),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30),
                 child: Text(
@@ -63,16 +63,16 @@ class PickUpLocation extends StatelessWidget {
                     onTap: () {
                       Get.to(const MapScreens());
                     },
-                    child: const Text(
+                    child: Text(
                       'Use current location',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+                      style: AppTextStyle.blacktext12,
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(
-                        left: 100), // Adjust spacing between text and icon
-                    child: Icon(
+                        left: Get.width *
+                            0.3), // Adjust spacing between text and icon
+                    child: const Icon(
                       Icons.navigate_next,
                     ),
                   ),

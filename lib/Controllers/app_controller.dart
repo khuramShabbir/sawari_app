@@ -37,7 +37,11 @@ class AppTextStyle {
     color: AppTextColors.secondaryColor,
     fontFamily: 'Inter',
   );
-
+  static TextStyle blacktext20 = TextStyle(
+    fontSize: 20,
+    color: AppTextColors.secondaryColor,
+    fontFamily: 'Inter',
+  );
   static TextStyle headerStylePrimaryText24 = TextStyle(
     fontSize: 24,
     color: AppTextColors.primaryColor,
@@ -51,8 +55,10 @@ class AppTextStyle {
 }
 
 class AppText {
-  static String inboxText = "No messages right now. Book or offer a ride to\ncontact someone.";
-  static String yourTipsLargeText = "Your future travel plans\nwill appear here.";
+  static String inboxText =
+      "No messages right now. Book or offer a ride to\ncontact someone.";
+  static String yourTipsLargeText =
+      "Your future travel plans\nwill appear here.";
   static String yourTipsgreyText =
       "Find the perfect ride from thousands of\ndestinations, or publish to share your travel costs.";
 }

@@ -4,6 +4,7 @@ import 'package:sawari_app/Controllers/app_controller.dart';
 import 'package:sawari_app/Plugins/Calancder/src/customization/calendar_style.dart';
 import 'package:sawari_app/Plugins/Calancder/src/table_calendar.dart';
 import 'package:sawari_app/Screens/pick_up_time_screen.dart';
+import 'package:sawari_app/Utilities/app_bar.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
 
 class CalenderScreen extends StatelessWidget {
@@ -14,16 +15,12 @@ class CalenderScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: Icon(Icons.arrow_back, color: AppTextColors.primaryColor),
-        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              CustomAppBar(),
               Text(
                 "When are you going?",
                 style: AppTextStyle.headerStylePrimaryText24

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sawari_app/Controllers/app_controller.dart';
 
 import '../Screens/number_of_seats_screen.dart';
 
@@ -56,15 +57,15 @@ class SearchLocation extends StatelessWidget {
                         onTap: () {
                           Get.to(NumberOfScreens());
                         },
-                        child: const Text(
+                        child: Text(
                           'Use current location',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: 12),
+                          style: AppTextStyle.blacktext12,
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(
-                            left: 100), // Adjust spacing between text and icon
+                            left: Get.width *
+                                0.3), // Adjust spacing between text and icon
                         child: Icon(
                           Icons.navigate_next,
                         ),

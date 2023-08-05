@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
                     Icons.phone,
                     color: AppTextColors.primaryColor,
                   ),
-                  prefixText: "+92  ",
+                  hintText: "+ 92",
                   prefixStyle: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 20),
                   border: OutlineInputBorder(
@@ -77,23 +77,24 @@ class _LoginState extends State<Login> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 child: TextFormField(
+                    obscureText: true,
                     decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                    borderSide: BorderSide(
-                      color: AppTextColors.primaryColor,
-                    ),
-                  ),
-                  hintText: 'Password',
-                  prefixIcon: Icon(
-                    Icons.lock,
-                    color: AppTextColors.primaryColor,
-                  ),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: AppTextColors.primaryColor,
-                  )),
-                )),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                        borderSide: BorderSide(
+                          color: AppTextColors.primaryColor,
+                        ),
+                      ),
+                      hintText: 'Password',
+                      prefixIcon: Icon(
+                        Icons.lock,
+                        color: AppTextColors.primaryColor,
+                      ),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: AppTextColors.primaryColor,
+                      )),
+                    )),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -143,8 +144,8 @@ class _LoginState extends State<Login> {
                   child: Text('Sign Up',
                       style: AppTextStyle.blacktext18.copyWith(
                           color: Colors.white, fontWeight: FontWeight.bold))),
-              const SizedBox(
-                height: 60,
+              SizedBox(
+                height: Get.height * 0.06,
               ),
               Text(
                 'Or connect with google account',

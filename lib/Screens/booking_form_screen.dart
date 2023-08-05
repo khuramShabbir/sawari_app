@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
-
-import 'search_location.dart';
+import 'package:sawari_app/Screens/search_location.dart';
 
 class BookingForm extends StatelessWidget {
   const BookingForm({Key? key}) : super(key: key);

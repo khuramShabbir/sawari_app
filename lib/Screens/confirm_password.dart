@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Controllers/app_controller.dart';
-import '../Screens/mainScreen.dart';
+import 'mainScreen.dart';
 
-class ConfirmPass extends StatelessWidget {
+class ConfirmPass extends StatefulWidget {
   const ConfirmPass({Key? key}) : super(key: key);
 
+  @override
+  State<ConfirmPass> createState() => _ConfirmPassState();
+}
+
+bool showpassword = true;
+bool showConfirmpassword = true;
+
+class _ConfirmPassState extends State<ConfirmPass> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,15 +22,14 @@ class ConfirmPass extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Text(
+              SizedBox(
+                height: Get.height * 0.15,
+              ),
+              Text(
                 'Forget Password?',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: AppTextStyle.blacktext20,
               ),
               const SizedBox(
                 height: 10,
@@ -31,6 +38,7 @@ class ConfirmPass extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 child: TextFormField(
+                  obscureText: showpassword,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
@@ -44,10 +52,16 @@ class ConfirmPass extends StatelessWidget {
                       color: AppTextColors.primaryColor,
                     ),
                     suffixIcon: IconButton(
-                      icon: const Icon(
-                        Icons.visibility,
-                        color: Colors.black,
-                        size: 17,
+                      icon: InkWell(
+                        onTap: () {
+                          showpassword = !showpassword;
+                          setState(() {});
+                        },
+                        child: const Icon(
+                          Icons.visibility,
+                          color: Colors.black,
+                          size: 17,
+                        ),
                       ),
                       onPressed: () {
                         // Handle visibility toggle
@@ -71,6 +85,7 @@ class ConfirmPass extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                 child: TextFormField(
+                  obscureText: showConfirmpassword,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
@@ -84,10 +99,16 @@ class ConfirmPass extends StatelessWidget {
                       color: AppTextColors.primaryColor,
                     ),
                     suffixIcon: IconButton(
-                      icon: const Icon(
-                        Icons.visibility,
-                        color: Colors.black,
-                        size: 17,
+                      icon: InkWell(
+                        onTap: () {
+                          showConfirmpassword = !showConfirmpassword;
+                          setState(() {});
+                        },
+                        child: const Icon(
+                          Icons.visibility,
+                          color: Colors.black,
+                          size: 17,
+                        ),
                       ),
                       onPressed: () {
                         // Handle visibility toggle
@@ -126,17 +147,11 @@ class ConfirmPass extends StatelessWidget {
                   ),
                   minimumSize: Size(Get.width * 0.75, 50),
                 ),
-                child: const Text(
+                child: Text(
                   'Reset Password',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+                  style: AppTextStyle.blacktext20.copyWith(
+                      fontWeight: FontWeight.w500, color: Colors.white),
                 ),
-              ),
-              const SizedBox(
-                height: 60,
               ),
             ],
           ),

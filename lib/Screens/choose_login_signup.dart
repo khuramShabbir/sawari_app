@@ -16,9 +16,9 @@ class Chooseloginsignup extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image(
-              image: AssetImage("assets/images/choose_login.jpeg"),
+              image: const AssetImage("assets/images/choose_login.jpeg"),
               height: Get.height * 0.34),
-          const SizedBox(height: 30),
+          SizedBox(height: Get.height * 0.05),
           Text('Your pick of rides at',
               style: AppTextStyle.headerStyleBlack24.copyWith(
                 fontWeight: FontWeight.w700,
@@ -28,7 +28,7 @@ class Chooseloginsignup extends StatelessWidget {
             style: AppTextStyle.headerStylePrimaryText24
                 .copyWith(fontWeight: FontWeight.w700),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: Get.height * 0.05),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
@@ -37,14 +37,11 @@ class Chooseloginsignup extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(55),
               ),
-              minimumSize: const Size(300, 50),
+              minimumSize: Size(Get.width * 0.8, 50),
             ),
-            child: const Text('Sign Up',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                )),
+            child: Text('Sign Up',
+                style: AppTextStyle.blacktext20.copyWith(
+                    fontWeight: FontWeight.w700, color: Colors.white)),
           ),
           const SizedBox(height: 30),
           GestureDetector(
@@ -54,14 +51,10 @@ class Chooseloginsignup extends StatelessWidget {
                 return const Login();
               }));
             },
-            child: Text(
-              'Login',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: AppTextColors.primaryColor,
-              ),
-            ),
+            child: Text('Login',
+                style: AppTextStyle.blacktext20.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: AppTextColors.primaryColor)),
           ),
         ],
       ))),
