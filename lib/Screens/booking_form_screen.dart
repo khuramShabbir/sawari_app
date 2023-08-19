@@ -78,10 +78,11 @@ class BookingForm extends StatelessWidget {
                               onTap: () async {
                                 LocationResult? result = await Get.to(
                                   () => PlacePicker(
-                                    "AIzaSyC5deQLeFh3ezF9PFDzMYBz4LjPqz1J9s0",
+                                    "AIzaSyCWny4UpQAR8LeHs1sAIgZYwvlK9udsP8g",
                                   ),
                                 );
                                 getAdress(result?.formattedAddress ?? "Null Value");
+                                logger.i(result?.latLng?.latitude ?? 0.0);
                               },
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
