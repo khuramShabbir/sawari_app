@@ -65,7 +65,7 @@ class _MainScreenState extends State<MainScreen> {
       body: PageView(
         controller: _pageController,
         onPageChanged: _onPageChanged,
-        children: const [
+        children: [
           BookingForm(),
           InboxScreen(),
           YourTipsScreen(),

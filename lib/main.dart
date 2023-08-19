@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:sawari_app/Contollers/LocationControllers/location_controller.dart';
 
@@ -15,8 +16,9 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => LocationController()),
       ],
-      child: const GetMaterialApp(
-          debugShowCheckedModeBanner: false, home: SplashScreen()),
+      child: const GetMaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen()),
     ),
   );
 }
+
+Logger logger = Logger();

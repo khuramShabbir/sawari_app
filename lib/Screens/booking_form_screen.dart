@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:place_picker/entities/location_result.dart';
+import 'package:place_picker/place_picker.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Screens/Sign_Up_Screens/login_screen.dart';
 import 'package:sawari_app/Screens/search_location.dart';
+import 'package:sawari_app/main.dart';
 
 class BookingForm extends StatelessWidget {
-  const BookingForm({Key? key}) : super(key: key);
+  BookingForm({Key? key}) : super(key: key);
+  final TextEditingController controller = TextEditingController();
+
+  void getAdress(String address) {
+    controller.text = address;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +30,7 @@ class BookingForm extends StatelessWidget {
                   children: [
                     Text(
                       'Your pick of rides at',
-                      style: AppTextStyle.headerStyleBlack24
-                          .copyWith(fontWeight: FontWeight.w700),
+                      style: AppTextStyle.headerStyleBlack24.copyWith(fontWeight: FontWeight.w700),
                     ),
                     Text(
                       'low prices.',
@@ -51,8 +59,7 @@ class BookingForm extends StatelessWidget {
                         children: [
                           Text(
                             'From',
-                            style: AppTextStyle.blacktext18
-                                .copyWith(fontWeight: FontWeight.bold),
+                            style: AppTextStyle.blacktext18.copyWith(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 5),
                           Container(
@@ -65,8 +72,18 @@ class BookingForm extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            child: const TextField(
-                              decoration: InputDecoration(
+                            child: TextField(
+                              controller: controller,
+                              readOnly: true,
+                              onTap: () async {
+                                LocationResult? result = await Get.to(
+                                  () => PlacePicker(
+                                    "AIzaSyC5deQLeFh3ezF9PFDzMYBz4LjPqz1J9s0",
+                                  ),
+                                );
+                                getAdress(result?.formattedAddress ?? "Null Value");
+                              },
+                              decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Enter from location',
                               ),
@@ -112,8 +129,7 @@ class BookingForm extends StatelessWidget {
                                 child: TextFormField(
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 5),
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 5),
                                   ),
                                 ),
                               ),
@@ -128,8 +144,7 @@ class BookingForm extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
                         return const SearchLocation();
                       }));
                     },
@@ -145,8 +160,7 @@ class BookingForm extends StatelessWidget {
                       minimumSize: Size(Get.width, 70),
                     ),
                     child: Text('Search',
-                        style: AppTextStyle.blacktext18
-                            .copyWith(color: Colors.white)),
+                        style: AppTextStyle.blacktext18.copyWith(color: Colors.white)),
                   ),
                 ),
                 const SizedBox(
