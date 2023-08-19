@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
-import 'package:sawari_app/Screens/chatScreen.dart';
+import 'package:sawari_app/Screens/ChatScreen/chatScreen.dart';
 
 class InboxScreen extends StatelessWidget {
   const InboxScreen({Key? key}) : super(key: key);

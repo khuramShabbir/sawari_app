@@ -61,7 +61,7 @@ class PickUpLocation extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.to(const MapScreens());
+                      Get.to(MapScreens());
                     },
                     child: Text(
                       'Use current location',
@@ -69,9 +69,7 @@ class PickUpLocation extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
-                        left: Get.width *
-                            0.3), // Adjust spacing between text and icon
+                    padding: EdgeInsets.only(left: Get.width * 0.3),
                     child: const Icon(
                       Icons.navigate_next,
                     ),

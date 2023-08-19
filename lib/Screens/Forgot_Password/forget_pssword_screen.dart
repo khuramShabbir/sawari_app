@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Controllers/app_controller.dart';
+import '../../Controllers/app_controller.dart';
 import 'confirm_password.dart';
 
 class ForgetPass extends StatelessWidget {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Controllers/app_controller.dart';
-import 'forget_pssword_screen.dart';
+import '../../Controllers/app_controller.dart';
+import '../Forgot_Password/forget_pssword_screen.dart';
+import '../personal_info_screen.dart';
 import 'sign_up_screen.dart';
 
 class Login extends StatefulWidget {
@@ -144,45 +145,45 @@ class _LoginState extends State<Login> {
                   child: Text('Sign Up',
                       style: AppTextStyle.blacktext18.copyWith(
                           color: Colors.white, fontWeight: FontWeight.bold))),
-              SizedBox(
-                height: Get.height * 0.06,
-              ),
-              Text(
-                'Or connect with google account',
-                style: TextStyle(
-                  color: AppTextColors.primaryColor,
-                ),
-              ),
+              // SizedBox(
+              //   height: Get.height * 0.06,
+              // ),
+              // Text(
+              //   'Or connect with google account',
+              //   style: TextStyle(
+              //     color: AppTextColors.primaryColor,
+              //   ),
+              // ),
               SizedBox(
                 height: Get.height * 0.02,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 40,
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: AppTextColors.primaryColor,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: Image.asset(
-                      "assets/images/google.png",
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Sign in with google',
-                    style: AppTextStyle.blacktext18
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Container(
+              //       height: 40,
+              //       padding: const EdgeInsets.all(4),
+              //       decoration: BoxDecoration(
+              //         shape: BoxShape.circle,
+              //         border: Border.all(
+              //           color: AppTextColors.primaryColor,
+              //           width: 2.0,
+              //         ),
+              //       ),
+              //       child: Image.asset(
+              //         "assets/images/google.png",
+              //       ),
+              //     ),
+              //     const SizedBox(
+              //       width: 10,
+              //     ),
+              //     Text(
+              //       'Sign in with google',
+              //       style: AppTextStyle.blacktext18
+              //           .copyWith(fontWeight: FontWeight.bold),
+              //     ),
+              //   ],
+              // ),
               SizedBox(
                 height: Get.height * 0.02,
               ),
@@ -196,10 +197,15 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     width: 5,
                   ),
-                  Text('Sign Up',
-                      style: AppTextStyle.blacktext14.copyWith(
-                          color: AppTextColors.primaryColor,
-                          fontWeight: FontWeight.w700)),
+                  InkWell(
+                    onTap: () {
+                      Get.to(const PersonalInfoScreen());
+                    },
+                    child: Text('Sign Up',
+                        style: AppTextStyle.blacktext14.copyWith(
+                            color: AppTextColors.primaryColor,
+                            fontWeight: FontWeight.w700)),
+                  ),
                 ],
               )
             ],

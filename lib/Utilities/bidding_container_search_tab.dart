@@ -4,7 +4,7 @@ import 'package:sawari_app/Controllers/BiddingPersonModelClass.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
 
 class BiddingContainer extends StatelessWidget {
-  BiddingContainer({Key? key}) : super(key: key);
+  const BiddingContainer({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(

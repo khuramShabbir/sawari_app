@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Controllers/app_controller.dart';
-import 'mainScreen.dart';
+import '../../Controllers/app_controller.dart';
+import '../mainScreen.dart';
 
 class ConfirmPass extends StatefulWidget {
   const ConfirmPass({Key? key}) : super(key: key);
@@ -134,10 +134,7 @@ class _ConfirmPassState extends State<ConfirmPass> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) {
-                    return MainScreen();
-                  }));
+                  Get.offAll(MainScreen());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppTextColors.primaryColor,

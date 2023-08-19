@@ -7,8 +7,8 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 
-import '../Controllers/app_controller.dart';
-import '../Screens/mainScreen.dart';
+import '../../Controllers/app_controller.dart';
+import '../mainScreen.dart';
 
 class CodeVerify extends StatelessWidget {
   final String verificationIdd;
@@ -16,9 +16,7 @@ class CodeVerify extends StatelessWidget {
   CodeVerify({Key? key, required this.verificationIdd}) : super(key: key);
 
   bool loading = false;
-
-  final phoneNumberController = TextEditingController();
-
+  final phoneCodeController = TextEditingController();
   final auth = FirebaseAuth.instance;
 
   @override
@@ -49,7 +47,7 @@ class CodeVerify extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Text(
-                'Enter the 4-digit code sent to your',
+                'Enter the 6-digit code sent to your',
                 style: AppTextStyle.blacktext18
                     .copyWith(fontWeight: FontWeight.w400),
               ),
@@ -76,7 +74,7 @@ class CodeVerify extends StatelessWidget {
                 style: const TextStyle(fontSize: 17),
                 onChanged: (pin) {},
                 onCompleted: (pin) {
-                  phoneNumberController.text = pin;
+                  phoneCodeController.text = pin;
                 },
               ),
               const SizedBox(
@@ -91,21 +89,26 @@ class CodeVerify extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () async {
-                    final credential = PhoneAuthProvider.credential(
-                        verificationId: verificationIdd,
-                        smsCode: phoneNumberController.text.toString());
-                    try {
-                      await auth.signInWithCredential(credential);
-                      // ignore: use_build_context_synchronously
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
-                        return MainScreen();
-                      }));
-                      // ignore: empty_catches
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(e.toString()),
-                      ));
+                    if (phoneCodeController.text == "") {
+                      Get.defaultDialog(
+                          title: "OTP  missing", middleText: "Enter valid otp");
+                    } else {
+                      final credential = PhoneAuthProvider.credential(
+                          verificationId: verificationIdd,
+                          smsCode: phoneCodeController.text.toString());
+                      try {
+                        await auth.signInWithCredential(credential);
+                        // ignore: use_build_context_synchronously
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (BuildContext context) {
+                          return MainScreen();
+                        }));
+                        // ignore: empty_catches
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(e.toString()),
+                        ));
+                      }
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -119,7 +122,7 @@ class CodeVerify extends StatelessWidget {
                   child: const Text('Submit',
                       style: TextStyle(
                         color: Colors.white,
-                      )))
+                      ))),
             ],
           ),
         ),

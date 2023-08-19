@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Screens/personal_info_screen.dart';
+
+import '../add_car_screen.dart';
 
 class AboutYouScreen extends StatelessWidget {
   const AboutYouScreen({Key? key}) : super(key: key);
@@ -38,8 +42,16 @@ class AboutYouScreen extends StatelessWidget {
                 )
               ],
             ),
-            purpleText("Edit profile picture"),
-            purpleText("Edit personal details"),
+            InkWell(
+                onTap: () {
+                  Get.to(const PersonalInfoScreen());
+                },
+                child: purpleText("Edit profile picture")),
+            InkWell(
+                onTap: () {
+                  Get.to(const AddCarScreen());
+                },
+                child: purpleText("Edit personal details")),
             blackText("Verify your profile"),
             purpleText("Verify my ID"),
             purpleText("Confirm google account"),

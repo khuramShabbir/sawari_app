@@ -3,7 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
 
-import '../Utilities/forward_arrow.dart';
+import '../../Utilities/forward_arrow.dart';
 import 'phone_no.dart';
 
 class PaymentScreen extends StatelessWidget {
@@ -23,7 +23,8 @@ class PaymentScreen extends StatelessWidget {
               padding: const EdgeInsets.all(30.0),
               child: Text(
                 "Please select your\npayment option.",
-                style: AppTextStyle.headerStyleBlack24.copyWith(fontWeight: FontWeight.w700),
+                style: AppTextStyle.headerStyleBlack24
+                    .copyWith(fontWeight: FontWeight.w700),
               ),
             ),
             const SizedBox(

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
 import 'package:sawari_app/Screens/mainScreen.dart';
 
-import '../Utilities/forward_arrow.dart';
+import '../../Utilities/forward_arrow.dart';
 
 class FinalRequestSubmitScreen extends StatelessWidget {
   const FinalRequestSubmitScreen({super.key});

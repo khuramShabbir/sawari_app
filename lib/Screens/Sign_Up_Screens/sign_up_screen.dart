@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/Screens/code_verify_screen.dart';
+import 'package:sawari_app/Screens/Sign_Up_Screens/code_verify_screen.dart';
 
-import '../Controllers/app_controller.dart';
+import '../../Controllers/app_controller.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({super.key});
@@ -99,28 +99,39 @@ class _SignUpState extends State<SignUp> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    auth.verifyPhoneNumber(
-                        phoneNumber:
-                            countryCode!.dialCode + phoneNumberController.text,
-                        verificationCompleted: (_) {},
-                        verificationFailed: (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(e.toString()),
-                          ));
-                        },
-                        codeSent: (String verificationId, int? token) {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return CodeVerify(
-                              verificationIdd: verificationId,
-                            );
-                          }));
-                        },
-                        codeAutoRetrievalTimeout: (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(e.toString()),
-                          ));
-                        });
+                    // ignore: unnecessary_null_comparison
+                    if (phoneNumberController.text == "") {
+                      Get.defaultDialog(
+                          title: "phone number is missing",
+                          middleText: "Enter Phone Number");
+                    } else if (countryCode == null) {
+                      Get.defaultDialog(
+                          title: "phone code is missing",
+                          middleText: "Enter Phone Code");
+                    } else {
+                      auth.verifyPhoneNumber(
+                          phoneNumber: countryCode!.dialCode +
+                              phoneNumberController.text,
+                          verificationCompleted: (_) {},
+                          verificationFailed: (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(e.toString()),
+                            ));
+                          },
+                          codeSent: (String verificationId, int? token) {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (BuildContext context) {
+                              return CodeVerify(
+                                verificationIdd: verificationId,
+                              );
+                            }));
+                          },
+                          codeAutoRetrievalTimeout: (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(e.toString()),
+                            ));
+                          });
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTextColors.primaryColor,
@@ -133,46 +144,46 @@ class _SignUpState extends State<SignUp> {
                   child: Text('Submit',
                       style: AppTextStyle.blacktext20
                           .copyWith(color: Colors.white))),
-              const SizedBox(
-                height: 55,
-              ),
-              Text(
-                'Or connect with google account',
-                style: TextStyle(
-                  color: AppTextColors.primaryColor,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: Get.height * 0.1),
-                  Container(
-                    height: 40,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: AppTextColors.primaryColor,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      // Adjust the padding as needed
-                      child: Image.asset(
-                        "assets/images/google.png",
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Sign in with google',
-                    style: AppTextStyle.blacktext20
-                        .copyWith(fontWeight: FontWeight.w700),
-                  ),
-                ],
-              ),
+              // const SizedBox(
+              //   height: 55,
+              // ),
+              // Text(
+              //   'Or connect with google account',
+              //   style: TextStyle(
+              //     color: AppTextColors.primaryColor,
+              //   ),
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     SizedBox(height: Get.height * 0.1),
+              //     Container(
+              //       height: 40,
+              //       decoration: BoxDecoration(
+              //         shape: BoxShape.circle,
+              //         border: Border.all(
+              //           color: AppTextColors.primaryColor,
+              //           width: 2.0,
+              //         ),
+              //       ),
+              //       child: Padding(
+              //         padding: const EdgeInsets.all(4.0),
+              //         // Adjust the padding as needed
+              //         child: Image.asset(
+              //           "assets/images/google.png",
+              //         ),
+              //       ),
+              //     ),
+              //     const SizedBox(
+              //       width: 10,
+              //     ),
+              //     Text(
+              //       'Sign in with google',
+              //       style: AppTextStyle.blacktext20
+              //           .copyWith(fontWeight: FontWeight.w700),
+              //     ),
+              //   ],
+              // ),
               const SizedBox(
                 height: 30,
               ),

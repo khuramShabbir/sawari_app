@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
-import 'package:sawari_app/Screens/empty_inbox_Screen.dart';
-import 'package:sawari_app/Screens/profil_screen.dart';
+import 'package:sawari_app/Screens/ChatScreen/empty_inbox_Screen.dart';
+import 'package:sawari_app/Screens/ProfileScreen/profil_screen.dart';
 
+import 'ChatScreen/inboxScreen.dart';
 import 'booking_form_screen.dart';
-import 'inboxScreen.dart';
 import 'your_tips_screen.dart';
 
 class MainScreen extends StatefulWidget {

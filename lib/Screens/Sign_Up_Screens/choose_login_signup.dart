@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Controllers/app_controller.dart';
+import '../../Controllers/app_controller.dart';
 import 'login_screen.dart';
 
 class Chooseloginsignup extends StatelessWidget {

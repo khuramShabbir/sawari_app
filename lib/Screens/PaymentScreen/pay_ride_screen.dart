@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
 
-import '../Utilities/continue_button.dart';
-import '../Utilities/forward_arrow.dart';
-import '../Utilities/round_corner_white_TextFormField.dart';
+import '../../Utilities/continue_button.dart';
+import '../../Utilities/forward_arrow.dart';
+import '../../Utilities/round_corner_white_TextFormField.dart';
 import 'payment_screen.dart';
 
 class PayRideScreen extends StatelessWidget {

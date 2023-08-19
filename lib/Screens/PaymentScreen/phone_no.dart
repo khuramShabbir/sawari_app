@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-import '../Controllers/app_controller.dart';
-import '../Utilities/forward_arrow.dart';
-import '../Utilities/round_corner_white_TextFormField.dart';
+import '../../Controllers/app_controller.dart';
+import '../../Utilities/forward_arrow.dart';
+import '../../Utilities/round_corner_white_TextFormField.dart';
 import 'final_request_submitted.dart';
 
 class PhoneNumberScreen extends StatelessWidget {

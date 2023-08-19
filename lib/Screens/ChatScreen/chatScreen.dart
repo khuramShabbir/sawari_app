@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Controllers/app_controller.dart';
 
-import '../Utilities/chat_container.dart';
+import '../../Utilities/chat_container.dart';
 
 class ChatScreen extends StatefulWidget {
   ChatScreen({Key? key}) : super(key: key);
