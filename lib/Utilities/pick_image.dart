@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 
 class GetImage {
   static Future<String?> getImage() async {

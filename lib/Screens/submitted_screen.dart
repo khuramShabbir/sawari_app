@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sawari_app/Screens/search_screen.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 
 class SubmittedScreen extends StatelessWidget {
   const SubmittedScreen({Key? key}) : super(key: key);

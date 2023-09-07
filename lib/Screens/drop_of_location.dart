@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 import '../Utilities/forward_arrow.dart';
 import 'calender_screen.dart';
 

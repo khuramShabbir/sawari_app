@@ -1,18 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:place_picker/entities/location_result.dart';
 import 'package:place_picker/place_picker.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
-import 'package:sawari_app/Screens/Sign_Up_Screens/login_screen.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/search_location.dart';
-import 'package:sawari_app/main.dart';
 
-class BookingForm extends StatelessWidget {
+class BookingForm extends StatefulWidget {
   BookingForm({Key? key}) : super(key: key);
-  final TextEditingController controller = TextEditingController();
 
-  void getAdress(String address) {
-    controller.text = address;
+  @override
+  State<BookingForm> createState() => _BookingFormState();
+}
+
+class _BookingFormState extends State<BookingForm> {
+  final TextEditingController pickUpLocController = TextEditingController();
+
+  final TextEditingController dropLocController = TextEditingController();
+
+  void PickUpAdress(String address) {
+    pickUpLocController.text = address;
+  }
+
+  void DropOffAdress(String address) {
+    dropLocController.text = address;
+  }
+
+  DateTime selectcurrentDate = DateTime.now();
+
+  Future<void> selectCurrentDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+        context: context,
+        initialDate: selectcurrentDate,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2050));
+    if (pickedDate != null && pickedDate != selectcurrentDate)
+      setState(() {
+        selectcurrentDate = pickedDate;
+      });
   }
 
   @override
@@ -30,7 +53,8 @@ class BookingForm extends StatelessWidget {
                   children: [
                     Text(
                       'Your pick of rides at',
-                      style: AppTextStyle.headerStyleBlack24.copyWith(fontWeight: FontWeight.w700),
+                      style: AppTextStyle.headerStyleBlack24
+                          .copyWith(fontWeight: FontWeight.w700),
                     ),
                     Text(
                       'low prices.',
@@ -59,7 +83,8 @@ class BookingForm extends StatelessWidget {
                         children: [
                           Text(
                             'From',
-                            style: AppTextStyle.blacktext18.copyWith(fontWeight: FontWeight.bold),
+                            style: AppTextStyle.blacktext18
+                                .copyWith(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 5),
                           Container(
@@ -73,7 +98,7 @@ class BookingForm extends StatelessWidget {
                               ),
                             ),
                             child: TextField(
-                              controller: controller,
+                              controller: pickUpLocController,
                               readOnly: true,
                               onTap: () async {
                                 LocationResult? result = await Get.to(
@@ -81,8 +106,9 @@ class BookingForm extends StatelessWidget {
                                     "AIzaSyCWny4UpQAR8LeHs1sAIgZYwvlK9udsP8g",
                                   ),
                                 );
-                                getAdress(result?.formattedAddress ?? "Null Value");
-                                logger.i(result?.latLng?.latitude ?? 0.0);
+                                PickUpAdress(
+                                    result?.formattedAddress ?? "Null Value");
+                                // logger.i(result?.latLng?.latitude ?? 0.0);
                               },
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
@@ -96,6 +122,7 @@ class BookingForm extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               )),
                           Container(
+                            height: 40,
                             decoration: const BoxDecoration(
                               border: Border(
                                 bottom: BorderSide(
@@ -104,10 +131,22 @@ class BookingForm extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            child: const TextField(
-                              decoration: InputDecoration(
+                            child: TextField(
+                              controller: dropLocController,
+                              readOnly: true,
+                              onTap: () async {
+                                LocationResult? result = await Get.to(
+                                  () => PlacePicker(
+                                    "AIzaSyCWny4UpQAR8LeHs1sAIgZYwvlK9udsP8g",
+                                  ),
+                                );
+                                DropOffAdress(
+                                    result?.formattedAddress ?? "Null Value");
+                                // logger.i(result?.latLng?.latitude ?? 0.0);
+                              },
+                              decoration: const InputDecoration(
                                 border: InputBorder.none,
-                                hintText: 'Enter to location',
+                                hintText: 'Enter from location',
                               ),
                             ),
                           ),
@@ -116,7 +155,15 @@ class BookingForm extends StatelessWidget {
                             children: [
                               const Icon(Icons.calendar_today),
                               const SizedBox(width: 5),
-                              const Text('Select Date'),
+                              InkWell(
+                                  onTap: () {
+                                    selectCurrentDate(context);
+                                  },
+                                  child: selectcurrentDate == null
+                                      ? const Text('Select Date')
+                                      : Text("${selectcurrentDate}"
+                                          .split(" ")
+                                          .first)),
                               const SizedBox(width: 60),
                               const Text(
                                 '|',
@@ -128,9 +175,11 @@ class BookingForm extends StatelessWidget {
                               const Icon(Icons.person),
                               Expanded(
                                 child: TextFormField(
+                                  keyboardType: TextInputType.number,
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 5),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 5),
                                   ),
                                 ),
                               ),
@@ -145,7 +194,8 @@ class BookingForm extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
                         return const SearchLocation();
                       }));
                     },
@@ -161,7 +211,8 @@ class BookingForm extends StatelessWidget {
                       minimumSize: Size(Get.width, 70),
                     ),
                     child: Text('Search',
-                        style: AppTextStyle.blacktext18.copyWith(color: Colors.white)),
+                        style: AppTextStyle.blacktext18
+                            .copyWith(color: Colors.white)),
                   ),
                 ),
                 const SizedBox(

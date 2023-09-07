@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/select_passengers_screen.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
 

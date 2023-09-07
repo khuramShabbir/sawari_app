@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Screens/pick_up_location_screen.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 import '../Utilities/app_bar.dart';
 import '../Utilities/forward_arrow.dart';
 import '../getX/number_of_screens_Controller.dart';

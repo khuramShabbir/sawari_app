@@ -74,7 +74,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
               ],
             ),
             pageview
-                ? const Expanded(child: AboutYouScreen())
+                ? Expanded(child: AboutYouScreen())
                 : const Expanded(child: AccountScreen())
           ],
         ),

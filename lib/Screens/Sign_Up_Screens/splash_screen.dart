@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../Controllers/app_controller.dart';
+import '../../Contollers/AuthControllers/app_controller.dart';
 import 'choose_login_signup.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,31 +20,35 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         const Duration(seconds: 2),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => const Chooseloginsignup())));
+            builder: (BuildContext context) => Chooseloginsignup())));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-            child: Row(
+        body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          'Share',
-          style: TextStyle(
-              fontSize: 45,
-              color: AppTextColors.primaryColor,
-              fontWeight: FontWeight.w700),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Share',
+              style: TextStyle(
+                  fontSize: 45,
+                  color: AppTextColors.primaryColor,
+                  fontWeight: FontWeight.w700),
+            ),
+            Text(
+              'Fare.',
+              style: TextStyle(
+                fontSize: 45,
+                color: AppTextColors.primaryColor,
+              ),
+            )
+          ],
         ),
-        Text(
-          'Fare.',
-          style: TextStyle(
-            fontSize: 45,
-            color: AppTextColors.primaryColor,
-          ),
-        )
       ],
-    )));
+    ));
   }
 }

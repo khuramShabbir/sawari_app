@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 
 class ChatContainer extends StatelessWidget {
   bool isCurrentUser;
   final String text;
-  ChatContainer({Key? key, this.isCurrentUser = true, this.text = ''}) : super(key: key);
+  ChatContainer({Key? key, this.isCurrentUser = true, this.text = ''})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +20,22 @@ class ChatContainer extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.justify,
-          style: TextStyle(color: isCurrentUser ? Colors.white : Colors.black54),
+          style:
+              TextStyle(color: isCurrentUser ? Colors.white : Colors.black54),
         ),
         decoration: BoxDecoration(
-            color: isCurrentUser ? AppTextColors.primaryColor : Colors.grey.shade300,
+            color: isCurrentUser
+                ? AppTextColors.primaryColor
+                : Colors.grey.shade300,
             borderRadius: BorderRadius.only(
                 topRight: const Radius.circular(15),
-                topLeft: isCurrentUser ? const Radius.circular(15) : const Radius.circular(0),
+                topLeft: isCurrentUser
+                    ? const Radius.circular(15)
+                    : const Radius.circular(0),
                 bottomLeft: const Radius.circular(15),
-                bottomRight: isCurrentUser ? const Radius.circular(0) : const Radius.circular(15))),
+                bottomRight: isCurrentUser
+                    ? const Radius.circular(0)
+                    : const Radius.circular(15))),
       ),
     );
   }

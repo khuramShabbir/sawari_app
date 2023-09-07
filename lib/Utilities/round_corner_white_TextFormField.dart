@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 
 class RoundCornerWhiteTextFormField extends StatelessWidget {
   bool prefix = true;

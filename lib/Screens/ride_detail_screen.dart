@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/PaymentScreen/pay_ride_screen.dart';
 import 'package:sawari_app/Utilities/continue_button.dart';
 

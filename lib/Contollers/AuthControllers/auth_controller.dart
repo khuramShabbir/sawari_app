@@ -1,34 +1,39 @@
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/cupertino.dart';
-// import 'package:google_sign_in/google_sign_in.dart';
-//
-// class AuthProvider extends ChangeNotifier {
-//   GoogleSignInAccount? _user;
-//   GoogleSignInAccount get user => _user!;
-//
-//   Future googleSignIn() async {
-//     final googleUser = await GoogleSignIn().signIn();
-//     if (googleUser == null) return;
-//     _user = googleUser;
-//     final googleAuth = await googleUser.authentication;
-//     final credential = GoogleAuthProvider.credential(
-//       accessToken: googleAuth.accessToken,
-//       idToken: googleAuth.idToken,
-//     );
-//   }
-//
-//   // UserCredential? userCredential;
-//   //
-//   // Future signInWithGoogle() async {
-//   //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-//   //   final GoogleSignInAuthentication? googleAuth =
-//   //       await googleUser?.authentication;
-//   //   final credential = GoogleAuthProvider.credential(
-//   //     accessToken: googleAuth?.accessToken,
-//   //     idToken: googleAuth?.idToken,
-//   //   );
-//   //   userCredential =
-//   //       await FirebaseAuth.instance.signInWithCredential(credential);
-//   //   notifyListeners();
-//   // }
-// }
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../Screens/Sign_Up_Screens/sign_up_screen.dart';
+
+class AuthProvider extends ChangeNotifier {
+  GoogleSignInAccount? user;
+
+  googleLogin() async {
+    print("googleLogin method Called");
+    GoogleSignIn googleSignIn = GoogleSignIn();
+    try {
+      var reslut = await googleSignIn.signIn();
+      if (reslut == null) {
+        return;
+      }
+      final userData = await reslut.authentication;
+      final credential = GoogleAuthProvider.credential(
+          accessToken: userData.accessToken, idToken: userData.idToken);
+      var finalResult =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      user = reslut;
+      Get.offAll(SignUpScreen());
+      print("Result $reslut");
+      print(reslut.displayName);
+      print(reslut.email);
+      print(user?.displayName);
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<void> logout() async {
+    await GoogleSignIn().disconnect();
+    FirebaseAuth.instance.signOut();
+  }
+}

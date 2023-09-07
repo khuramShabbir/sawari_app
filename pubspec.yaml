@@ -45,10 +45,11 @@ dependencies:
   simple_gesture_detector: ^0.2.0
   fl_country_code_picker: ^0.1.5
   image_picker: ^1.0.2
-  google_maps_flutter: ^2.4.0
+  google_maps_flutter:
   geolocator: ^9.0.2
   place_picker: ^0.10.0
   logger:
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:

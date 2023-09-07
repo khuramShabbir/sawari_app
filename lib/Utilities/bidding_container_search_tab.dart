@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/Controllers/BiddingPersonModelClass.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Contollers/AuthControllers/BiddingPersonModelClass.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 
 class BiddingContainer extends StatelessWidget {
   const BiddingContainer({Key? key}) : super(key: key);

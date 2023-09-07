@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
-import 'package:sawari_app/Screens/ChatScreen/empty_inbox_Screen.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/ProfileScreen/profil_screen.dart';
+import 'package:sawari_app/Screens/publish_screen.dart';
 
 import 'ChatScreen/inboxScreen.dart';
 import 'booking_form_screen.dart';
@@ -67,10 +67,10 @@ class _MainScreenState extends State<MainScreen> {
         onPageChanged: _onPageChanged,
         children: [
           BookingForm(),
-          InboxScreen(),
-          YourTipsScreen(),
-          EmptyInboxScreen(),
-          ProfilScreen(),
+          PublishScreen(),
+          const YourTipsScreen(),
+          const InboxScreen(),
+          const ProfilScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

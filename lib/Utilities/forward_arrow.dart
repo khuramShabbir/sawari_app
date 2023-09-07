@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 
 class ForwardArrow extends StatelessWidget {
   const ForwardArrow({Key? key}) : super(key: key);

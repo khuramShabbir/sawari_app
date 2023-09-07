@@ -1,12 +1,18 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/personal_info_screen.dart';
 
+import '../../Contollers/AuthControllers/auth_controller.dart';
 import '../add_car_screen.dart';
 
+// ignore: must_be_immutable
+
 class AboutYouScreen extends StatelessWidget {
-  const AboutYouScreen({Key? key}) : super(key: key);
+  AboutYouScreen({Key? key}) : super(key: key);
+  AuthProvider authProvider = AuthProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +22,6 @@ class AboutYouScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,25 +47,35 @@ class AboutYouScreen extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
             InkWell(
                 onTap: () {
                   Get.to(const PersonalInfoScreen());
                 },
-                child: purpleText("Edit profile picture")),
+                child: purpleText("Edit profile")),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            // blackText("Verify your profile"),
+            // purpleText("Verify my ID"),
+            // purpleText("Confirm google account"),
+            // purpleText("Confirm phone number"),
+            // blackText("About you"),
+
+            // purpleText("Add a mini bio"),
+            purpleText("Add my preferences"),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            // blackText("Vehicles"),
+
             InkWell(
                 onTap: () {
                   Get.to(const AddCarScreen());
                 },
-                child: purpleText("Edit personal details")),
-            blackText("Verify your profile"),
-            purpleText("Verify my ID"),
-            purpleText("Confirm google account"),
-            purpleText("Confirm phone number"),
-            blackText("About you"),
-            purpleText("Add a mini bio"),
-            purpleText("Add my preferences"),
-            blackText("Vehicles"),
-            purpleText("Add Vehicle"),
+                child: purpleText("Add Vehicle")),
             Container(),
             Container(),
           ],
@@ -73,7 +88,7 @@ class AboutYouScreen extends StatelessWidget {
     return Text(
       text,
       style:
-          AppTextStyle.blacktext12.copyWith(color: AppTextColors.primaryColor),
+          AppTextStyle.blacktext14.copyWith(color: AppTextColors.primaryColor),
     );
   }
 

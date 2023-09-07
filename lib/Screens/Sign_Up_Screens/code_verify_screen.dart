@@ -7,7 +7,7 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 
-import '../../Controllers/app_controller.dart';
+import '../../Contollers/AuthControllers/app_controller.dart';
 import '../mainScreen.dart';
 
 class CodeVerify extends StatelessWidget {
@@ -99,10 +99,8 @@ class CodeVerify extends StatelessWidget {
                       try {
                         await auth.signInWithCredential(credential);
                         // ignore: use_build_context_synchronously
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (BuildContext context) {
-                          return MainScreen();
-                        }));
+                        Get.offAll(MainScreen());
+
                         // ignore: empty_catches
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(

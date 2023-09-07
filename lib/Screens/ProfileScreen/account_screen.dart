@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class AccountScreen extends StatelessWidget {
             blackText("Ratings"),
             lineContainer(),
             blackText("Notifications, emails, & SMS"),
-            blackText("Change password"),
+            // blackText("Change password"),
             blackText("Postal address"),
             lineContainer(),
             blackText("Available funds"),

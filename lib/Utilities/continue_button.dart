@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 
 class ContinueButton extends StatelessWidget {
   const ContinueButton({Key? key}) : super(key: key);

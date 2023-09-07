@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 import '../Utilities/pick_image.dart';
 
 class AddCarScreen extends StatefulWidget {

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Controllers/app_controller.dart';
-import 'login_screen.dart';
+import '../../Contollers/AuthControllers/app_controller.dart';
+import '../../Contollers/AuthControllers/auth_controller.dart';
 
 class Chooseloginsignup extends StatelessWidget {
-  const Chooseloginsignup({super.key});
+  Chooseloginsignup({super.key});
+  AuthProvider authProvider = AuthProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -28,33 +29,42 @@ class Chooseloginsignup extends StatelessWidget {
             style: AppTextStyle.headerStylePrimaryText24
                 .copyWith(fontWeight: FontWeight.w700),
           ),
-          SizedBox(height: Get.height * 0.05),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppTextColors.primaryColor,
-              foregroundColor: AppTextColors.primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(55),
+          SizedBox(height: Get.height * 0.08),
+          Container(
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                border:
+                    Border.all(color: AppTextColors.primaryColor, width: 3)),
+            child: InkWell(
+              onTap: () {
+                authProvider.googleLogin();
+                // authProvider.googleSignIn();
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 40,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      // Adjust the padding as needed
+                      child: Image.asset(
+                        "assets/images/google.png",
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Sign in with google',
+                    style: AppTextStyle.blacktext20
+                        .copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
               ),
-              minimumSize: Size(Get.width * 0.8, 50),
             ),
-            child: Text('Sign Up',
-                style: AppTextStyle.blacktext20.copyWith(
-                    fontWeight: FontWeight.w700, color: Colors.white)),
-          ),
-          const SizedBox(height: 30),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                return const Login();
-              }));
-            },
-            child: Text('Login',
-                style: AppTextStyle.blacktext20.copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: AppTextColors.primaryColor)),
           ),
         ],
       ))),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Controllers/app_controller.dart';
+import '../../Contollers/AuthControllers/app_controller.dart';
 import '../Forgot_Password/forget_pssword_screen.dart';
 import '../personal_info_screen.dart';
 import 'sign_up_screen.dart';
@@ -51,7 +51,8 @@ class _LoginState extends State<Login> {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 child: TextFormField(
                     decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -65,7 +66,8 @@ class _LoginState extends State<Login> {
                     color: AppTextColors.primaryColor,
                   ),
                   hintText: "+ 92",
-                  prefixStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  prefixStyle: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
                     color: AppTextColors.primaryColor,
@@ -73,7 +75,8 @@ class _LoginState extends State<Login> {
                 )),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 child: TextFormField(
                     obscureText: true,
                     decoration: InputDecoration(
@@ -108,7 +111,8 @@ class _LoginState extends State<Login> {
                           }),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Text('Remember Me', style: AppTextStyle.blacktext12),
+                        child: Text('Remember Me',
+                            style: AppTextStyle.blacktext12),
                       ),
                     ],
                   ),
@@ -116,7 +120,8 @@ class _LoginState extends State<Login> {
                       onTap: () {
                         Get.to(const ForgetPass());
                       },
-                      child: Text('Forgot Password', style: AppTextStyle.blacktext12)),
+                      child: Text('Forgot Password',
+                          style: AppTextStyle.blacktext12)),
                 ],
               ),
               const SizedBox(
@@ -124,8 +129,9 @@ class _LoginState extends State<Login> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                      return SignUp();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return SignUpScreen();
                     }));
                   },
                   style: ElevatedButton.styleFrom(
@@ -137,8 +143,8 @@ class _LoginState extends State<Login> {
                     minimumSize: Size(Get.width * 0.7, 50),
                   ),
                   child: Text('Sign Up',
-                      style: AppTextStyle.blacktext18
-                          .copyWith(color: Colors.white, fontWeight: FontWeight.bold))),
+                      style: AppTextStyle.blacktext18.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.bold))),
               // SizedBox(
               //   height: Get.height * 0.06,
               // ),
@@ -197,7 +203,8 @@ class _LoginState extends State<Login> {
                     },
                     child: Text('Sign Up',
                         style: AppTextStyle.blacktext14.copyWith(
-                            color: AppTextColors.primaryColor, fontWeight: FontWeight.w700)),
+                            color: AppTextColors.primaryColor,
+                            fontWeight: FontWeight.w700)),
                   ),
                 ],
               )

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/Controllers/app_controller.dart';
+import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Plugins/Calancder/src/customization/calendar_style.dart';
 import 'package:sawari_app/Plugins/Calancder/src/table_calendar.dart';
 import 'package:sawari_app/Screens/pick_up_time_screen.dart';

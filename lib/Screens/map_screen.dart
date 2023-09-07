@@ -9,7 +9,7 @@ import 'package:sawari_app/Screens/drop_of_location.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
 
-import '../Controllers/app_controller.dart';
+import '../Contollers/AuthControllers/app_controller.dart';
 
 class MapScreens extends StatefulWidget {
   const MapScreens({super.key});

@@ -5,21 +5,26 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Screens/Sign_Up_Screens/code_verify_screen.dart';
+import 'package:sawari_app/Screens/mainScreen.dart';
 
-import '../../Controllers/app_controller.dart';
+import '../../Contollers/AuthControllers/app_controller.dart';
 
-class SignUp extends StatefulWidget {
-  SignUp({super.key});
+class SignUpScreen extends StatefulWidget {
+  SignUpScreen({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final phoneNumberController = TextEditingController();
   final auth = FirebaseAuth.instance;
   final countryPicker = const FlCountryCodePicker();
-  CountryCode? countryCode;
+  CountryCode? countryCode = const CountryCode(
+    name: "Pakistan",
+    code: "PK",
+    dialCode: "+92",
+  );
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,9 +34,38 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              InkWell(
+                  onTap: () {
+                    Get.to(MainScreen());
+                  },
+                  child: Text('Welcome to', style: AppTextStyle.blacktext18)),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Share',
+                      style: TextStyle(
+                        fontSize: 45,
+                        color: AppTextColors.primaryColor,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'Fare.',
+                      style: TextStyle(
+                        fontSize: 45,
+                        color: AppTextColors.primaryColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: Get.height * 0.05,
+              ),
               Text('Join us via phone number', style: AppTextStyle.blacktext20),
               const SizedBox(
-                height: 30,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -39,8 +73,10 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        final code =
-                            await countryPicker.showPicker(context: context);
+                        final code = await countryPicker.showPicker(
+                          initialSelectedLocale: "PK",
+                          context: context,
+                        );
                         setState(() {
                           countryCode = code;
                         });
@@ -70,6 +106,8 @@ class _SignUpState extends State<SignUp> {
                         height: 55,
                         child: Center(
                           child: TextFormField(
+                            style: AppTextStyle.blacktext20
+                                .copyWith(fontWeight: FontWeight.w700),
                             controller: phoneNumberController,
                             decoration: InputDecoration(
                               contentPadding:
@@ -104,10 +142,6 @@ class _SignUpState extends State<SignUp> {
                       Get.defaultDialog(
                           title: "phone number is missing",
                           middleText: "Enter Phone Number");
-                    } else if (countryCode == null) {
-                      Get.defaultDialog(
-                          title: "phone code is missing",
-                          middleText: "Enter Phone Code");
                     } else {
                       auth.verifyPhoneNumber(
                           phoneNumber: countryCode!.dialCode +
@@ -141,70 +175,9 @@ class _SignUpState extends State<SignUp> {
                     ),
                     minimumSize: Size(Get.width * 0.8, 50),
                   ),
-                  child: Text('Submit',
+                  child: Text('Login',
                       style: AppTextStyle.blacktext20
                           .copyWith(color: Colors.white))),
-              // const SizedBox(
-              //   height: 55,
-              // ),
-              // Text(
-              //   'Or connect with google account',
-              //   style: TextStyle(
-              //     color: AppTextColors.primaryColor,
-              //   ),
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     SizedBox(height: Get.height * 0.1),
-              //     Container(
-              //       height: 40,
-              //       decoration: BoxDecoration(
-              //         shape: BoxShape.circle,
-              //         border: Border.all(
-              //           color: AppTextColors.primaryColor,
-              //           width: 2.0,
-              //         ),
-              //       ),
-              //       child: Padding(
-              //         padding: const EdgeInsets.all(4.0),
-              //         // Adjust the padding as needed
-              //         child: Image.asset(
-              //           "assets/images/google.png",
-              //         ),
-              //       ),
-              //     ),
-              //     const SizedBox(
-              //       width: 10,
-              //     ),
-              //     Text(
-              //       'Sign in with google',
-              //       style: AppTextStyle.blacktext20
-              //           .copyWith(fontWeight: FontWeight.w700),
-              //     ),
-              //   ],
-              // ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Already have an account?',
-                    style: AppTextStyle.blacktext14,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'Sign in',
-                    style: AppTextStyle.blacktext14.copyWith(
-                        color: AppTextColors.primaryColor,
-                        fontWeight: FontWeight.w700),
-                  )
-                ],
-              )
             ],
           ),
         ),
