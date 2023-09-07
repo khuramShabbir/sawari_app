@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:sawari_app/Screens/mainScreen.dart';
-import 'package:sawari_app/extention2.dart';
 
 import '../../Contollers/AuthControllers/app_controller.dart';
 import '../../Utilities/forward_arrow.dart';
@@ -39,11 +37,7 @@ class PhoneNumberScreen extends StatelessWidget {
           SizedBox(
             height: Get.height * 0.22,
           ),
-          Expanded(
-            child: Container().onTap(() {
-              Get.to(MainScreen());
-            }),
-          ),
+          Expanded(child: Container()),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Align(

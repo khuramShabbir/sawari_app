@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
+import 'package:sawari_app/Screens/drop_of_location.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
-
-import 'map_screen.dart';
 
 class PickUpLocation extends StatelessWidget {
   const PickUpLocation({super.key});
@@ -61,7 +60,7 @@ class PickUpLocation extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.to(MapScreens());
+                      Get.to(DropOfLocationScreen());
                     },
                     child: Text(
                       'Use current location',

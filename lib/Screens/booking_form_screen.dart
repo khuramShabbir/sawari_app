@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:place_picker/place_picker.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
-import 'package:sawari_app/Screens/search_location.dart';
+
+import 'search_screen.dart';
 
 class BookingForm extends StatefulWidget {
   BookingForm({Key? key}) : super(key: key);
@@ -194,10 +195,7 @@ class _BookingFormState extends State<BookingForm> {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
-                        return const SearchLocation();
-                      }));
+                      Get.to(SearchScreen());
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTextColors.primaryColor,

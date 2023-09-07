@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
-import 'package:sawari_app/Screens/select_passengers_screen.dart';
+import 'package:sawari_app/Screens/set_price_screen.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
 
 class MiddleSeatScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class MiddleSeatScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.to(SelectPassengersScreen());
+                    Get.to(SetPriceScreen());
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

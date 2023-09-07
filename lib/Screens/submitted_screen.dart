@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sawari_app/Screens/search_screen.dart';
+import 'package:sawari_app/Screens/mainScreen.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
 
 import '../Contollers/AuthControllers/app_controller.dart';
@@ -47,7 +47,7 @@ class SubmittedScreen extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: InkWell(
                       onTap: () {
-                        Get.to(SearchScreen());
+                        Get.to(MainScreen());
                       },
                       child: const ForwardArrow()),
                 )

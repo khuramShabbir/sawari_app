@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
+import 'package:sawari_app/Screens/select_passengers_screen.dart';
 
 import '../Utilities/app_bar.dart';
 import '../Utilities/forward_arrow.dart';
-import 'middle_seat_screen.dart';
 
 class PickUpTimeScreen extends StatelessWidget {
   const PickUpTimeScreen({super.key});
@@ -26,6 +26,14 @@ class PickUpTimeScreen extends StatelessWidget {
               ),
               const SizedBox(
                 height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(38.0),
+                child: Text(
+                  "Make date picker",
+                  style: AppTextStyle.headerStyleBlack24
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
               ),
               InkWell(
                 onTap: () {
@@ -72,7 +80,7 @@ class PickUpTimeScreen extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: InkWell(
                       onTap: () {
-                        Get.to(const MiddleSeatScreen());
+                        Get.to(SelectPassengersScreen());
                       },
                       child: const ForwardArrow()),
                 ),

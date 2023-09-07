@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sawari_app/Contollers/LocationControllers/location_controller.dart';
-import 'package:sawari_app/Screens/drop_of_location.dart';
+import 'package:sawari_app/Screens/publish_screen.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
 
@@ -133,7 +133,7 @@ class _MapScreensState extends State<MapScreens> {
                 alignment: Alignment.bottomRight,
                 child: InkWell(
                     onTap: () {
-                      Get.to(const DropOfLocationScreen());
+                      Get.to(PublishScreen());
                     },
                     child: const ForwardArrow())),
           ],

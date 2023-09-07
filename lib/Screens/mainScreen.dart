@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/ProfileScreen/profil_screen.dart';
-import 'package:sawari_app/Screens/publish_screen.dart';
+import 'package:sawari_app/Screens/pick_up_location_screen.dart';
 
 import 'ChatScreen/inboxScreen.dart';
 import 'booking_form_screen.dart';
@@ -67,7 +67,7 @@ class _MainScreenState extends State<MainScreen> {
         onPageChanged: _onPageChanged,
         children: [
           BookingForm(),
-          PublishScreen(),
+          PickUpLocation(),
           const YourTipsScreen(),
           const InboxScreen(),
           const ProfilScreen(),

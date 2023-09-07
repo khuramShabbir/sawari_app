@@ -4,7 +4,7 @@ import 'package:sawari_app/Utilities/app_bar.dart';
 
 import '../Contollers/AuthControllers/app_controller.dart';
 import '../Utilities/forward_arrow.dart';
-import 'calender_screen.dart';
+import 'pick_up_time_screen.dart';
 
 class DropOfLocationScreen extends StatelessWidget {
   const DropOfLocationScreen({super.key});
@@ -78,7 +78,7 @@ class DropOfLocationScreen extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: InkWell(
                       onTap: () {
-                        Get.to(const CalenderScreen());
+                        Get.to(const PickUpTimeScreen());
                       },
                       child: const ForwardArrow())),
             ],

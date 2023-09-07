@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sawari_app/Screens/map_screen.dart';
 import 'package:sawari_app/getX/frame23Controller.dart';
 
 import '../Contollers/AuthControllers/app_controller.dart';
 import '../Utilities/app_bar.dart';
 import '../Utilities/forward_arrow.dart';
-import 'submitted_screen.dart';
 
 class SetPriceScreen extends StatelessWidget {
   SetPriceScreen({Key? key}) : super(key: key);
@@ -124,7 +124,7 @@ class SetPriceScreen extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: InkWell(
                     onTap: () {
-                      Get.to(const SubmittedScreen());
+                      Get.to(MapScreens());
                     },
                     child: const ForwardArrow()),
               )
