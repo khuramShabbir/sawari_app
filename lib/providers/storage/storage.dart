@@ -6,5 +6,5 @@ read(key) {
 }
 
 write(key, value) async {
-  return await box.write(key, value);
+  await box.write(key, value);
 }

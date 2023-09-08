@@ -22,10 +22,8 @@ class AuthProvider extends ChangeNotifier {
       var finalResult =
           await FirebaseAuth.instance.signInWithCredential(credential);
       user = reslut;
+      // write("GoogleUserData", user);
       Get.offAll(SignUpScreen());
-      print("Result $reslut");
-      print(reslut.displayName);
-      print(reslut.email);
       print(user?.displayName);
     } catch (error) {
       print(error);

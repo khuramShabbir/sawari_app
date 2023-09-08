@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:sawari_app/Screens/Sign_Up_Screens/sign_up_screen.dart';
 
 import '../../Contollers/AuthControllers/app_controller.dart';
-import 'choose_login_signup.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         const Duration(seconds: 2),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => Chooseloginsignup())));
+            builder: (BuildContext context) => SignUpScreen())));
   }
 
   @override

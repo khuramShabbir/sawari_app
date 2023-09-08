@@ -6,14 +6,17 @@ import 'package:get/get.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:sawari_app/providers/auth/authProvider.dart';
 
 import '../../Contollers/AuthControllers/app_controller.dart';
-import '../mainScreen.dart';
 
 class CodeVerify extends StatelessWidget {
   final String verificationIdd;
+  final String phoneNumber;
 
-  CodeVerify({Key? key, required this.verificationIdd}) : super(key: key);
+  CodeVerify(
+      {Key? key, required this.verificationIdd, required this.phoneNumber})
+      : super(key: key);
 
   bool loading = false;
   final phoneCodeController = TextEditingController();
@@ -98,8 +101,9 @@ class CodeVerify extends StatelessWidget {
                           smsCode: phoneCodeController.text.toString());
                       try {
                         await auth.signInWithCredential(credential);
+                        // write("verificationCredentials", credential);
                         // ignore: use_build_context_synchronously
-                        Get.offAll(MainScreen());
+                        Api.loginUser(credential.verificationId, phoneNumber);
 
                         // ignore: empty_catches
                       } catch (e) {

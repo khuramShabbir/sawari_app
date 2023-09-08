@@ -1,11 +1,15 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:sawari_app/Screens/mainScreen.dart';
+import 'package:sawari_app/Utilities/keys.dart';
 import 'package:sawari_app/Utilities/progress_diologes.dart';
 import 'package:sawari_app/providers/storage/storage.dart';
+import 'package:sawari_app/providers/urls.dart';
 
 class Api {
-  static const String _baseUrl = "https://laundry.bhumanit.com/api/";
+  static const String _baseUrl = "http://51.20.36.43:8009";
 
   static final _headers = {'content-type': 'application/json'};
 
@@ -33,12 +37,14 @@ class Api {
       startProgress();
       final response = await http.post(Uri.parse('$_baseUrl$path'),
           headers: _headers, body: json.encode(body));
-      print(response.body);
+      var bodyResponse = response.body;
+
+      print(bodyResponse);
       stopProgress();
       if (response.statusCode == 200) {
-        return response.body;
+        return bodyResponse;
       } else {
-        print(response.body);
+        print(bodyResponse);
         return null;
       }
     } catch (e) {
@@ -47,14 +53,19 @@ class Api {
     }
   }
 
-  void loginUser(loginId, password) async {
-    saveUser(
-        await Api.post("", body: {"loginId": loginId, "password": password}));
+  static void loginUser(loginId, phone) async {
+    saveUser(await Api.post(Urls.loginUser, body: {
+      "loginId": loginId,
+      "isSocialLogin": true,
+      "socialType": "PHONE",
+      "mobileNumber": phone,
+    }));
   }
 
-  void saveUser(String? response) async {
+  static void saveUser(String? response) async {
     if (response != null) {
-      await write("", 4);
+      await write(Keys.isUserLoggedIn, response);
+      Get.offAll(MainScreen());
     }
   }
 }

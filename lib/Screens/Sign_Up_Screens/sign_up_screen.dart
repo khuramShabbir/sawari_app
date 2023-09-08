@@ -3,9 +3,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Screens/Sign_Up_Screens/code_verify_screen.dart';
 import 'package:sawari_app/Screens/mainScreen.dart';
+import 'package:sawari_app/Utilities/progress_diologes.dart';
 
 import '../../Contollers/AuthControllers/app_controller.dart';
 
@@ -143,6 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           title: "phone number is missing",
                           middleText: "Enter Phone Number");
                     } else {
+                      startProgress();
                       auth.verifyPhoneNumber(
                           phoneNumber: countryCode!.dialCode +
                               phoneNumberController.text,
@@ -153,17 +156,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ));
                           },
                           codeSent: (String verificationId, int? token) {
+                            stopProgress();
+                            Fluttertoast.showToast(msg: "OTP send");
                             Navigator.push(context, MaterialPageRoute(
                                 builder: (BuildContext context) {
                               return CodeVerify(
                                 verificationIdd: verificationId,
+                                phoneNumber: phoneNumberController.text,
                               );
                             }));
                           },
                           codeAutoRetrievalTimeout: (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(e.toString()),
-                            ));
+                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            //   content: Text(e.toString()),
+                            // ));
                           });
                     }
                   },
