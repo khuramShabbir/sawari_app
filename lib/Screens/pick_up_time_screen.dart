@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/select_passengers_screen.dart';
+import 'package:sawari_app/providers/publish_provider.dart';
 
 import '../Utilities/app_bar.dart';
 import '../Utilities/forward_arrow.dart';
@@ -12,83 +14,99 @@ class PickUpTimeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const CustomAppBar(),
-              Text(
-                "At what time will you pick\npassengers up?",
-                style: AppTextStyle.headerStyleBlack24
-                    .copyWith(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(38.0),
-                child: Text(
-                  "Make date picker",
-                  style: AppTextStyle.headerStyleBlack24
-                      .copyWith(fontWeight: FontWeight.bold),
+      child: Consumer<BookingController>(builder: (context, child, __) {
+        return Scaffold(
+          backgroundColor: Colors.white,
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                const CustomAppBar(),
+                SizedBox(
+                  height: Get.height * 0.05,
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Get.dialog(Column(
+                InkWell(
+                  onTap: () {
+                    child.selectPickUpDate(context);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TimePickerDialog(
-                        initialTime: TimeOfDay.fromDateTime(DateTime.now()),
+                      const Icon(
+                        Icons.calendar_month,
+                        size: 50,
+                      ),
+                      Text(
+                        child.selectedDate == null
+                            ? "Select Date"
+                            : "${child.selectedDate}".split(" ").first,
+                        style: AppTextStyle.headerStyleBlack24,
                       )
                     ],
-                  ));
-                },
-                child: Container(
-                  width: Get.width * 0.8,
-                  height: 60,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(
-                          width: 0.50, color: Color(0xFFE5DDEE)),
-                      borderRadius: BorderRadius.circular(55),
+                  ),
+                ),
+                SizedBox(
+                  height: Get.height * 0.2,
+                ),
+                Text(
+                  "At what time will you pick\npassengers up?",
+                  style: AppTextStyle.headerStylePrimaryText24
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: Get.height * 0.05,
+                ),
+                InkWell(
+                  onTap: () {
+                    child.displayTimeDialog(context);
+                  },
+                  child: Container(
+                    width: Get.width * 0.8,
+                    height: 60,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(
+                            width: 0.50, color: Color(0xFFE5DDEE)),
+                        borderRadius: BorderRadius.circular(55),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(),
+                        Text(
+                          child.selectedTime == null
+                              ? "Select time"
+                              : "${child.selectedTime}",
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 30,
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const Icon(Icons.keyboard_arrow_down_outlined)
+                      ],
                     ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(),
-                      const Text(
-                        '18:00',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 40,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const Icon(Icons.keyboard_arrow_down_outlined)
-                    ],
+                ),
+                Expanded(child: Container()),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: InkWell(
+                        onTap: () {
+                          Get.to(SelectPassengersScreen());
+                        },
+                        child: const ForwardArrow()),
                   ),
-                ),
-              ),
-              Expanded(child: Container()),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: InkWell(
-                      onTap: () {
-                        Get.to(SelectPassengersScreen());
-                      },
-                      child: const ForwardArrow()),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }

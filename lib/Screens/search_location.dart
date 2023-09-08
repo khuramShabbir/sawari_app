@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 
-import '../Screens/number_of_seats_screen.dart';
-
 class SearchLocation extends StatelessWidget {
   const SearchLocation({Key? key}) : super(key: key);
 
@@ -55,7 +53,7 @@ class SearchLocation extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.to(NumberOfScreens());
+                          // Get.to(NumberOfScreens());
                         },
                         child: Text(
                           'Use current location',
