@@ -3,13 +3,14 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/select_passengers_screen.dart';
+import 'package:sawari_app/Utilities/show_tost.dart';
 import 'package:sawari_app/providers/publish_provider.dart';
 
 import '../Utilities/app_bar.dart';
 import '../Utilities/forward_arrow.dart';
 
-class PickUpTimeScreen extends StatelessWidget {
-  const PickUpTimeScreen({super.key});
+class TimeandDateScreen extends StatelessWidget {
+  const TimeandDateScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,14 @@ class PickUpTimeScreen extends StatelessWidget {
             child: Column(
               children: [
                 const CustomAppBar(),
+                SizedBox(
+                  height: Get.height * 0.05,
+                ),
+                Text(
+                  "Select Start Date ",
+                  style: AppTextStyle.headerStylePrimaryText24
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
                   height: Get.height * 0.05,
                 ),
@@ -97,7 +106,9 @@ class PickUpTimeScreen extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: InkWell(
                         onTap: () {
-                          Get.to(SelectPassengersScreen());
+                          child.selectedTime == null
+                              ? showToast("Select Time")
+                              : Get.to(SelectPassengersScreen());
                         },
                         child: const ForwardArrow()),
                   ),

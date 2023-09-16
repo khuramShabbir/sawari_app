@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:place_picker/place_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:sawari_app/Screens/pick_up_time_screen.dart';
+import 'package:sawari_app/Screens/time_and_date-screen.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
+import 'package:sawari_app/Utilities/show_tost.dart';
 import 'package:sawari_app/main.dart';
 import 'package:sawari_app/providers/publish_provider.dart';
 
@@ -45,7 +46,7 @@ class DropOfLocationScreen extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(30), // Set the border radius here
                   ),
-                  child: TextField(
+                  child: TextFormField(
                     controller: auth.destinationLocationcontroller,
                     onTap: () async {
                       LocationResult? result = await Get.to(
@@ -53,13 +54,13 @@ class DropOfLocationScreen extends StatelessWidget {
                           "AIzaSyCWny4UpQAR8LeHs1sAIgZYwvlK9udsP8g",
                         ),
                       );
-                      auth.getdestinationLocation(
-                          result?.formattedAddress ?? "");
+                      auth.getdestinationLocation(result);
                       logger.i(result?.latLng?.latitude ?? 0.0);
                     },
                     decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 15),
                       border: InputBorder.none,
-                      hintText: '    Tap To select Location',
+                      hintText: 'Tap To select Location',
                     ),
                   ),
                 ),
@@ -70,7 +71,9 @@ class DropOfLocationScreen extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: InkWell(
                         onTap: () {
-                          Get.to(const PickUpTimeScreen());
+                          auth.destinationLocationcontroller.text.isEmpty
+                              ? showToast("Enter Valid Adress")
+                              : Get.to(const TimeandDateScreen());
                         },
                         child: const ForwardArrow()),
                   ),

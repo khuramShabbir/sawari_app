@@ -49,7 +49,6 @@ class AccountScreen extends StatelessWidget {
   Widget blackText(String text) {
     return Text(
       text,
-      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
     );
   }
 

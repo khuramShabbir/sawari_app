@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Plugins/Calancder/src/customization/calendar_style.dart';
 import 'package:sawari_app/Plugins/Calancder/src/table_calendar.dart';
-import 'package:sawari_app/Screens/pick_up_time_screen.dart';
+import 'package:sawari_app/Screens/time_and_date-screen.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
 
@@ -52,7 +52,7 @@ class CalenderScreen extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: InkWell(
                       onTap: () {
-                        Get.to(const PickUpTimeScreen());
+                        Get.to(const TimeandDateScreen());
                       },
                       child: const ForwardArrow()))
             ],

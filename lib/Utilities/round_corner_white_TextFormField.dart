@@ -22,6 +22,7 @@ class RoundCornerWhiteTextFormField extends StatelessWidget {
               EdgeInsets.only(left: prefix ? Get.width * 0.15 : 10, right: 10),
           child: Center(
             child: TextFormField(
+              keyboardType: TextInputType.number,
               style: const TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
               decoration: InputDecoration(
                   icon: prefix

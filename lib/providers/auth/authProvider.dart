@@ -8,16 +8,22 @@ import 'package:sawari_app/Utilities/progress_diologes.dart';
 import 'package:sawari_app/providers/storage/storage.dart';
 import 'package:sawari_app/providers/urls.dart';
 
-class Api {
-  static const String _baseUrl = "http://51.20.36.43:8009";
+import '../../Utilities/user_utils.dart';
 
-  static final _headers = {'content-type': 'application/json'};
+class Api {
+  static const String baseUrl = "http://3.142.160.221:8009";
+  static getHeaders() {
+    return {
+      'content-type': 'application/json',
+      'Authorization': "Bearer ${getUser()?.token}",
+    };
+  }
 
   static Future<String?> get(String path) async {
     try {
       startProgress();
       final response =
-          await http.get(Uri.parse('$_baseUrl$path'), headers: _headers);
+          await http.get(Uri.parse('$baseUrl$path'), headers: getHeaders());
       stopProgress();
       print(response.body);
       if (response.statusCode == 200) {
@@ -35,8 +41,8 @@ class Api {
   static Future<String?> post(String path, {dynamic body}) async {
     try {
       startProgress();
-      final response = await http.post(Uri.parse('$_baseUrl$path'),
-          headers: _headers, body: json.encode(body));
+      final response = await http.post(Uri.parse('$baseUrl$path'),
+          headers: getHeaders(), body: json.encode(body));
       var bodyResponse = response.body;
 
       print(bodyResponse);
@@ -49,6 +55,37 @@ class Api {
       }
     } catch (e) {
       stopProgress();
+      return null;
+    }
+  }
+
+  static Future<String?> multiPartPost(String path,
+      {dynamic body, Map<String, String>? files}) async {
+    try {
+      var request = http.MultipartRequest('POST', Uri.parse('$baseUrl$path'));
+      request.fields.addAll(body);
+
+      if (files != null) {
+        files.forEach((key, value) async {
+          request.files.add(await http.MultipartFile.fromPath(key, value));
+        });
+      }
+      request.headers.addAll(getHeaders());
+
+      startProgress();
+      http.StreamedResponse response = await request.send();
+      stopProgress();
+      var responseBody = await response.stream.bytesToString();
+      print(responseBody);
+      if (response.statusCode == 200) {
+        return responseBody;
+      } else {
+        print(response.reasonPhrase);
+        return null;
+      }
+    } catch (e) {
+      stopProgress();
+      print(e);
       return null;
     }
   }

@@ -3,10 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
+import 'package:sawari_app/Screens/Vehicles/show_all_vehicle.dart';
 import 'package:sawari_app/Screens/personal_info_screen.dart';
 
 import '../../Contollers/AuthControllers/auth_controller.dart';
-import '../add_car_screen.dart';
+import '../Vehicles/add_car_screen.dart';
 
 // ignore: must_be_immutable
 
@@ -32,7 +33,7 @@ class AboutYouScreen extends StatelessWidget {
                     blackText("Mujeeb"),
                     const Text(
                       "newcumor",
-                      style: TextStyle(fontSize: 8, color: Colors.grey),
+                      style: TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -76,8 +77,14 @@ class AboutYouScreen extends StatelessWidget {
                   Get.to(const AddCarScreen());
                 },
                 child: purpleText("Add Vehicle")),
-            Container(),
-            Container(),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            InkWell(
+                onTap: () {
+                  Get.to(const ShowAllVehicle());
+                },
+                child: purpleText("View All Vehicle")),
           ],
         ),
       ),

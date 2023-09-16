@@ -4,17 +4,33 @@ import 'package:provider/provider.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/middle_seat_screen.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
+import 'package:sawari_app/Utilities/show_tost.dart';
+import 'package:sawari_app/providers/auth/authProvider.dart';
 import 'package:sawari_app/providers/publish_provider.dart';
 
 import '../Utilities/forward_arrow.dart';
 
-class SelectPassengersScreen extends StatelessWidget {
+class SelectPassengersScreen extends StatefulWidget {
   SelectPassengersScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SelectPassengersScreen> createState() => _SelectPassengersScreenState();
+}
+
+class _SelectPassengersScreenState extends State<SelectPassengersScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    bookingController.getUserCars();
+  }
+
+  int indexcolorvalue = 0;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Consumer<BookingController>(builder: (context, child, __) {
+      child: Consumer<BookingController>(builder: (context, data, __) {
         return Scaffold(
           backgroundColor: Colors.white,
           body: Column(
@@ -36,29 +52,48 @@ class SelectPassengersScreen extends StatelessWidget {
                 flex: 2,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 5,
+                    itemCount: data.userVehicles?.data?.length ?? 0,
                     itemBuilder: (BuildContext context, int index) {
+                      var vehicle = data.userVehicles!.data![index];
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            CircleAvatar(
-                              child: const Text("Car Picture"),
-                              radius: Get.height * 0.07,
+                        child: InkWell(
+                          onTap: () {
+                            indexcolorvalue = index;
+                            data.vehicleTypeId = vehicle.vehicleMake?.id ?? 0;
+                            setState(() {});
+                            print(data.vehicleTypeId);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(
+                                    color: indexcolorvalue == index
+                                        ? Colors.grey
+                                        : Colors.white)),
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      "${Api.baseUrl}/${vehicle.vehiclePhoto}"),
+                                  radius: Get.height * 0.07,
+                                ),
+                                Text(
+                                  "${vehicle.vehicleModel?.modelName}",
+                                  style: AppTextStyle.blacktext20,
+                                ),
+                                Text(
+                                  "${vehicle.vehicleMake?.companyName}",
+                                  style: AppTextStyle.blacktext20,
+                                ),
+                                Text(
+                                  "${vehicle.plateNumber}",
+                                  style: AppTextStyle.blacktext20,
+                                )
+                              ],
                             ),
-                            Text(
-                              "Name",
-                              style: AppTextStyle.blacktext20,
-                            ),
-                            Text(
-                              "Model",
-                              style: AppTextStyle.blacktext20,
-                            ),
-                            Text(
-                              "Model",
-                              style: AppTextStyle.blacktext20,
-                            )
-                          ],
+                          ),
                         ),
                       );
                     }),
@@ -87,9 +122,8 @@ class SelectPassengersScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              if (child.numberOfPassengers > 0)
-                                child.decrement();
-                              child.notifyListeners();
+                              if (data.numberOfPassengers > 0) data.decrement();
+                              data.notifyListeners();
                             },
                             child: Container(
                               height: 45,
@@ -103,13 +137,13 @@ class SelectPassengersScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '${child.numberOfPassengers}',
+                            '${data.numberOfPassengers}',
                             style: const TextStyle(fontSize: 50),
                           ),
                           InkWell(
                             onTap: () {
-                              child.increment();
-                              child.notifyListeners();
+                              data.increment();
+                              data.notifyListeners();
                             },
                             child: Container(
                               height: 45,
@@ -139,7 +173,9 @@ class SelectPassengersScreen extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: InkWell(
                       onTap: () {
-                        Get.to(const MiddleSeatScreen());
+                        data.numberOfPassengers == 0
+                            ? showToast("Select Atleast one Passemger")
+                            : Get.to(const MiddleSeatScreen());
                       },
                       child: const ForwardArrow()),
                 ),

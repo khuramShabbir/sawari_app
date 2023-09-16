@@ -7,10 +7,11 @@ import 'package:provider/provider.dart';
 import 'package:sawari_app/Contollers/LocationControllers/location_controller.dart';
 import 'package:sawari_app/Screens/Sign_Up_Screens/sign_up_screen.dart';
 import 'package:sawari_app/Screens/mainScreen.dart';
-import 'package:sawari_app/Utilities/keys.dart';
+import 'package:sawari_app/Utilities/user_utils.dart';
 import 'package:sawari_app/providers/publish_provider.dart';
 
-import 'providers/storage/storage.dart';
+import 'providers/addCarProvider.dart';
+import 'providers/get_all_registered_cars.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,12 +23,12 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => LocationController()),
         ChangeNotifierProvider(create: (_) => BookingController()),
+        ChangeNotifierProvider(create: (_) => AddCarProvider()),
+        ChangeNotifierProvider(create: (_) => GetAllRegisteredCarsProvider()),
       ],
       child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: read(Keys.isUserLoggedIn) == null
-              ? SignUpScreen()
-              : MainScreen()),
+          home: getUser() == null ? SignUpScreen() : MainScreen()),
     ),
   );
 }

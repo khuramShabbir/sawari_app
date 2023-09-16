@@ -108,6 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 55,
                         child: Center(
                           child: TextFormField(
+                            keyboardType: TextInputType.phone,
                             style: AppTextStyle.blacktext20
                                 .copyWith(fontWeight: FontWeight.w700),
                             controller: phoneNumberController,

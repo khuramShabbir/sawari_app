@@ -6,6 +6,7 @@ import 'package:sawari_app/Contollers/LocationControllers/location_controller.da
 import 'package:sawari_app/Screens/publish_screen.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
+import 'package:sawari_app/Utilities/show_tost.dart';
 import 'package:sawari_app/main.dart';
 import 'package:sawari_app/providers/publish_provider.dart';
 
@@ -137,7 +138,9 @@ class _MapScreensState extends State<MapScreens> {
                   alignment: Alignment.bottomRight,
                   child: InkWell(
                       onTap: () {
-                        Get.to(PublishScreen());
+                        child.meetUpLocationcontroller.text.isEmpty
+                            ? showToast("Enter Valid Adress")
+                            : Get.to(PublishScreen());
                       },
                       child: const ForwardArrow())),
             ],

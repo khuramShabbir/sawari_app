@@ -66,8 +66,11 @@ class _PublishScreenState extends State<PublishScreen> {
                               .copyWith(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 8),
-                        Text(child.pickUpLocationcontroller.text.toString() ??
-                            "Select Again"),
+                        Text(child.pickUpLocationcontroller.text
+                                .toString()
+                                .isEmpty
+                            ? "Select again pick up location"
+                            : child.pickUpLocationcontroller.text.toString()),
                         SizedBox(height: Get.height * 0.035),
                         Text('Destination',
                             style: AppTextStyle.blacktext18.copyWith(
@@ -75,16 +78,22 @@ class _PublishScreenState extends State<PublishScreen> {
                             )),
                         const SizedBox(height: 8),
                         Text(child.destinationLocationcontroller.text
-                                .toString() ??
-                            "Select Again"),
+                                .toString()
+                                .isEmpty
+                            ? "Select again destination location"
+                            : child.destinationLocationcontroller.text
+                                .toString()),
                         SizedBox(height: Get.height * 0.034),
                         Text('MeetUp Location',
                             style: AppTextStyle.blacktext18.copyWith(
                               fontWeight: FontWeight.bold,
                             )),
                         const SizedBox(height: 8),
-                        Text(child.meetUpLocationcontroller.text.toString() ??
-                            "Select Again"),
+                        Text(child.meetUpLocationcontroller.text
+                                .toString()
+                                .isEmpty
+                            ? "Select Again"
+                            : child.meetUpLocationcontroller.text.toString()),
                         SizedBox(height: Get.height * 0.034),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

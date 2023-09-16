@@ -4,6 +4,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/set_price_screen.dart';
 import 'package:sawari_app/Utilities/app_bar.dart';
+import 'package:sawari_app/providers/publish_provider.dart';
 
 class MiddleSeatScreen extends StatelessWidget {
   const MiddleSeatScreen({Key? key}) : super(key: key);
@@ -33,6 +34,7 @@ class MiddleSeatScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    bookingController.ismiddleSeatEmpty == true;
                     Get.to(SetPriceScreen());
                   },
                   child: Padding(
@@ -64,18 +66,24 @@ class MiddleSeatScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "No, I’ll squeeze in 3",
-                        style: AppTextStyle.greytext12.copyWith(fontSize: 14),
-                      ),
-                      const Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        size: 15,
-                      ),
-                    ],
+                  child: InkWell(
+                    onTap: () {
+                      bookingController.ismiddleSeatEmpty == false;
+                      Get.to(SetPriceScreen());
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "No, I’ll squeeze in 3",
+                          style: AppTextStyle.greytext12.copyWith(fontSize: 14),
+                        ),
+                        const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 15,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

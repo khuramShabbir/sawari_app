@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 
 import '../../Utilities/continue_button.dart';
-import '../../Utilities/forward_arrow.dart';
 import '../../Utilities/round_corner_white_TextFormField.dart';
 import 'payment_screen.dart';
 
@@ -56,21 +55,11 @@ class PayRideScreen extends StatelessWidget {
             SizedBox(
               height: Get.height * 0.22,
             ),
-            const ContinueButton(),
-            Expanded(
-              child: Container(),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: InkWell(
-                    onTap: () {
-                      Get.to(const PaymentScreen());
-                    },
-                    child: const ForwardArrow()),
-              ),
-            ),
+            InkWell(
+                onTap: () {
+                  Get.to(const PaymentScreen());
+                },
+                child: const ContinueButton()),
           ],
         ),
       ),

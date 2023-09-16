@@ -2,19 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:sawari_app/Screens/map_screen.dart';
+import 'package:sawari_app/Utilities/show_tost.dart';
 import 'package:sawari_app/providers/publish_provider.dart';
 
 import '../Contollers/AuthControllers/app_controller.dart';
 import '../Utilities/app_bar.dart';
 import '../Utilities/forward_arrow.dart';
 
-class SetPriceScreen extends StatelessWidget {
+class SetPriceScreen extends StatefulWidget {
   SetPriceScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SetPriceScreen> createState() => _SetPriceScreenState();
+}
+
+class _SetPriceScreenState extends State<SetPriceScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    bookingController.getDistanceAndTime();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Consumer<BookingController>(builder: (context, child, __) {
+      child: Consumer<BookingController>(builder: (____, data, __) {
         return Scaffold(
           backgroundColor: Colors.white,
           body: Padding(
@@ -44,8 +57,8 @@ class SetPriceScreen extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          if (child.price > 0) child.priceDecrement();
-                          child.notifyListeners();
+                          if (data.price > 0) data.priceDecrement();
+                          data.notifyListeners();
                         },
                         child: Container(
                           height: 50,
@@ -59,14 +72,14 @@ class SetPriceScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${child.price ?? ""}',
+                        '${data.price ?? ""}',
                         style: const TextStyle(
                             fontSize: 30, fontWeight: FontWeight.w700),
                       ),
                       InkWell(
                         onTap: () {
-                          child.priceIncrement();
-                          child.notifyListeners();
+                          data.priceIncrement();
+                          data.notifyListeners();
                         },
                         child: Container(
                           height: 50,
@@ -125,7 +138,9 @@ class SetPriceScreen extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: InkWell(
                       onTap: () {
-                        Get.to(MapScreens());
+                        data.price == 0
+                            ? showToast("Price Should not be empty")
+                            : Get.to(MapScreens());
                       },
                       child: const ForwardArrow()),
                 )

@@ -4,25 +4,24 @@
 
 import 'dart:convert';
 
-CreateUser createUserFromJson(String str) =>
-    CreateUser.fromJson(json.decode(str));
+User userFromJson(String str) => User.fromJson(json.decode(str));
 
-String createUserToJson(CreateUser data) => json.encode(data.toJson());
+String createUserToJson(User data) => json.encode(data.toJson());
 
-class CreateUser {
+class User {
   bool? error;
   String? message;
   String? token;
   Data? data;
 
-  CreateUser({
+  User({
     this.error,
     this.message,
     this.token,
     this.data,
   });
 
-  factory CreateUser.fromJson(Map<String, dynamic> json) => CreateUser(
+  factory User.fromJson(Map<String, dynamic> json) => User(
         error: json["error"],
         message: json["message"],
         token: json["token"],

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:sawari_app/Contollers/AuthControllers/app_controller.dart';
 import 'package:sawari_app/Screens/drop_of_location.dart';
 import 'package:sawari_app/Utilities/forward_arrow.dart';
+import 'package:sawari_app/Utilities/show_tost.dart';
 import 'package:sawari_app/main.dart';
 
 import '../providers/publish_provider.dart';
@@ -45,7 +46,7 @@ class _PickUpLocationState extends State<PickUpLocation> {
                     borderRadius:
                         BorderRadius.circular(30), // Set the border radius here
                   ),
-                  child: TextField(
+                  child: TextFormField(
                     controller: auth.pickUpLocationcontroller,
                     onTap: () async {
                       LocationResult? result = await Get.to(
@@ -53,12 +54,14 @@ class _PickUpLocationState extends State<PickUpLocation> {
                           "AIzaSyCWny4UpQAR8LeHs1sAIgZYwvlK9udsP8g",
                         ),
                       );
-                      auth.getPickUpLocation(result?.formattedAddress ?? "");
+
+                      auth.getPickUpLocation(result);
                       logger.i(result?.latLng?.latitude ?? 0.0);
                     },
                     decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 15),
                       border: InputBorder.none,
-                      hintText: '    Tap To select Location',
+                      hintText: 'Tap To select Location',
                     ),
                   ),
                 ),
@@ -69,7 +72,9 @@ class _PickUpLocationState extends State<PickUpLocation> {
                     alignment: Alignment.bottomRight,
                     child: InkWell(
                         onTap: () {
-                          Get.to(DropOfLocationScreen());
+                          auth.pickUpLocationcontroller.text.isEmpty
+                              ? showToast("Enter Valid Adress")
+                              : Get.to(DropOfLocationScreen());
                         },
                         child: ForwardArrow()),
                   ),
